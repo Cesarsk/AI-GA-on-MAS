@@ -15,7 +15,7 @@ h1 {
 
 h1.retroshadow {
     color: #ffffff;
-    background-color: black;
+    background-color: #1E1B3A;
     letter-spacing: .05em;
     text-shadow: 
       4px 4px 0px #bdbdbd, 
@@ -23,13 +23,15 @@ h1.retroshadow {
   }
 
 html, body {
-  background-color: rgb(46, 46, 46);
+  background-color: #1E1B3A;
+  color: white
 }
 
 #controller {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  color: black
 }
 
 #controller td, #controller th {
@@ -38,6 +40,7 @@ html, body {
 }
 
 #controller tr:nth-child(even){background-color: #f2f2f2;}
+#controller tr:nth-child(odd){background-color: #c1c1c1;}
 
 #controller tr:hover {background-color: #ddd;}
 
