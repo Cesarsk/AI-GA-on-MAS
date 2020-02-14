@@ -17,12 +17,11 @@ var randomWaterGeneration = 3;
 var randomPoisonGeneration = 3;
 
 var deathEnabled = false;
-var pauseEnabled = false;
+var stop = false
 
-var frameWidth = 500;
+var frameWidth = 900;
 var frameHeight = 500;
 
-var stop = false
 var fps = 0;
 var backgroundColor = 'black';
 
@@ -86,6 +85,7 @@ function draw() {
         drawElements();
         refreshParameters();
     }
+    refreshPause();
 }
 
 function drawElements() {
@@ -172,6 +172,10 @@ function refreshParameters() {
     document.getElementById("mutationRateOutput").innerHTML = mutationRate.toFixed(2);
 
     deathEnabled = document.getElementById("deathCheckbox").checked;
+}
+
+function refreshPause() {
+    stop = document.getElementById("pauseCheckbox").checked;
 }
 
 function runGeneticAlgorithm() {

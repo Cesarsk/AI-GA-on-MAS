@@ -4,23 +4,24 @@
   <link rel="stylesheet" type="text/css" href="css/index.css">
   <script src="lib/p5.js"></script>
   <script src="model/Organism.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <div class="container">
-    <div>
-      <h1>AN ATTEMPT TO IA GENETIC CELLULAR AUTOMA</h1>
+    <div class="title">
+      <h1>AI - GA in Cellular Automata</h1>
     </div>
 
-    <div id="canvas">
+    <div class="canvas" id="canvas">
       <script src="canvas.js"></script>
     </div>
 
-    <div>
-      <table id="controller">
-        <TH>PARAMETERS</TH>
-        <TH>CURRENT VALUE</TH>
+    <div class="tableDiv">
+      <table id="table">
+        <th>PARAMETERS</th>
+        <th>CURRENT VALUE</th>
         <tr>
           <td><span>MAX FITNESS:</span></td>
           <td>
@@ -30,13 +31,26 @@
         <tr>
           <td><span>GENERATION:</span></td>
           <td>
-            <div id="population">population</div>
+            <div id="population"></div>
           </td>
         </tr>
-      </table>
 
-      <br></br>
-      <table id="controller">
+      
+
+        <th>PARAMETERS</th>
+        <th>CURRENT VALUE</th>
+        <tr>
+          <td><span>Pause Simulation:</span></td>
+          <td><input type="checkbox" id="pauseCheckbox"></td>
+        </tr>
+
+        <tr>
+          <td><span>Reset Simulation:</span></td>
+          <td><button onclick="resetSimulation()">Reset</button></td>
+        </tr>
+
+      </table>
+      <table id="table">
         <th>PARAMETERS</th>
         <th>CURRENT VALUE</th>
         <th>INPUT</th>
@@ -76,13 +90,13 @@
           <td></td>
           <td><input type="checkbox" id="deathCheckbox" checked></td>
         </tr>
-
-        <tr>
-          <td><span>Reset Simulation:</span></td>
-          <td></td>
-          <td><button onclick="resetSimulation()">Reset</button></td>
-        </tr>
       </table>
+
+
+    </div>
+
+    <div class="mail">
+      NEED INFO? REACH ME OUT @ <a href="mailto:luca.cesarano1@gmail.com">MY E-MAIL</a>
     </div>
 
     <div class="signature">
