@@ -2,17 +2,14 @@ var population = new Array();
 var food = new Array();
 var water = new Array();
 var poison = new Array();
-var obstacles = new Array();
 
 var elitism = 5;
-
 var generation = 0;
 var populationSize = 30;
 var mutationRate = 0.9;
 var numberOfFood = 200;
 var numberOfWater = 50;
 var numberOfPoison = 30;
-var numberOfObstacles = 30;
 var maxFitness = 0;
 
 var randomFoodGeneration = 15;
@@ -20,20 +17,21 @@ var randomWaterGeneration = 3;
 var randomPoisonGeneration = 3;
 
 var deathEnabled = false;
+var pauseEnabled = false;
 
-var frameWidth = 1024;
-var frameHeight = 768;
+var frameWidth = 500;
+var frameHeight = 500;
 
-var stop = true;
+var stop = false
+var fps = 0;
+var backgroundColor = 'black';
 
-var backgroundColor = 'black'
 // html controllers
 function resetSimulation() {
     population = new Array();
     food = new Array();
     water = new Array();
     poison = new Array();
-    obstacles = new Array();
 
     initElements();
 }
@@ -41,15 +39,15 @@ function resetSimulation() {
 //Setup Canvas, Framerate and Init Elements
 function setup() {
     var cnv = createCanvas(frameWidth, frameHeight);
-    var x = (window.innerWidth - width) / 2;
-    cnv.position(x,1000);
-    frameRate(60);
-    if (!stop) initElements();
+    cnv.parent('canvas');
+    initElements();
     background(backgroundColor);
 }
 
 function initElements() {
-    
+    fps = parseInt(document.getElementById("framerate").value);
+    frameRate(fps);
+
     for (var i = 0; i < populationSize; i++) {
         population.push(new Organism());
     }
@@ -65,23 +63,16 @@ function initElements() {
     for (var i = 0; i < numberOfPoison; i++) {
         poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
     }
-
-    for (var i = 0; i < numberOfObstacles; i++) {
-        //TODO: RENDERE OSTACOLI PIU SPESSI
-        obstacles.push(new Obstacle(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10), random(30) + 10, random(30) + 10));
-    }
 }
 
 //Called (num_frames) per second.
 function draw() {
-
-    if (!stop) {
+    if (stop == false) {
         // every 5 seconds generating new population
         if (frameCount % 150 == 0) {
             //PER IL MOMENTO LO COMMENTO, POI LO STUDIO E ABILITO
             runGeneticAlgorithm();
         }
-
 
         // remove all elements from last frame
         clear();
@@ -117,11 +108,6 @@ function drawElements() {
         fill(255, 0, 0);
         noStroke();
         ellipse(poison[i].x, poison[i].y, 5);
-    }
-
-    // obstacles
-    for (var i = 0; i < obstacles.length; i++) {
-        obstacles[i].draw();
     }
 }
 
@@ -166,9 +152,12 @@ function removeDead() {
 }
 
 function refreshParameters() {
-    // update info called by draw() periodically
     document.getElementById("fitness").innerHTML = "" + maxFitness;
     document.getElementById("population").innerHTML = "" + generation;
+
+    fps = parseInt(document.getElementById("framerate").value);
+    document.getElementById("framerateOutput").innerHTML = fps;
+    frameRate(fps);
 
     randomFoodGeneration = document.getElementById("randomFoodGeneration").value;
     document.getElementById("randomFoodGenerationOutput").innerHTML = randomFoodGeneration;

@@ -192,14 +192,6 @@ function Organism() {
     };
 
     this.move = function () {
-
-        // avoid obstacle
-        for (var i = 0; i < obstacles.length; i++) {
-            if (obstacles[i].contains(this.position, this.radius)) {
-                this.acceleration.add(createVector(random(20) - 10, random(20) - 10));
-            }
-        }
-
         // update position
         this.velocity.add(this.acceleration); // add force if there is any
         this.acceleration.mult(0); // reset acceleration
