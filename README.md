@@ -1,4 +1,4 @@
-# IA-genetic-conway-game-of-life
+# Artificial Intelligence - Genetic Algorithm applied to Cellular Automata
 GA (Genetic Algorithm) applied to CA (Cellular Automata)
 
 ## Description
