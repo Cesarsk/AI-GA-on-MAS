@@ -24,6 +24,7 @@ body {
 }
 
 .mail {
+  justify-content: flex-end;
   padding-top: 0%;
 }
 
