@@ -276,7 +276,6 @@ function runGeneticAlgorithm() {
         mutationRateProb = random(1);
         if (mutationRateProb <= mutationRate) {
             child.randomMutation();
-            console.log("called because p = "+p);
         }
 
         if (child.radius > child.sight) {
