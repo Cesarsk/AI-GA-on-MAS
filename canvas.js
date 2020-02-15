@@ -19,6 +19,7 @@ var randomPoisonGeneration = 3;
 var deathEnabled = false;
 var pauseEnabled = false;
 var fps = 0;
+var mutationRateProb = 0;
 
 var frameWidth = 900;
 var frameHeight = 500;
@@ -194,7 +195,14 @@ function runGeneticAlgorithm() {
     //by ensuring that the EA does not waste time re-discovering previously discarded partial solutions. 
     //Candidate solutions that are preserved unchanged through elitism remain eligible for selection 
     //as parents when breeding the remainder of the next generation.
-    
+
+    //A practical variant of the general process of constructing a 
+    //new population is to allow the best organism(s) 
+    //from the current generation to carry over to the next, unaltered. 
+    //This strategy is known as elitist selection and guarantees that 
+    //the solution quality obtained by the GA will not decrease from 
+    //one generation to the next.
+
     var tempElitism = 0;
     if (elitism > population.length) {
         tempElitism = population.length;
@@ -203,7 +211,7 @@ function runGeneticAlgorithm() {
     else {
         tempElitism = elitism;
     }
-    
+
     for (var i = 0; i < tempElitism; i++) {
 
         var maxPopulationFitness = 0;
@@ -265,7 +273,11 @@ function runGeneticAlgorithm() {
         }
 
         // mutation
-        child.randomMutation();
+        mutationRateProb = random(1);
+        if (mutationRateProb <= mutationRate) {
+            child.randomMutation();
+            console.log("called because p = "+p);
+        }
 
         if (child.radius > child.sight) {
             child.sight = child.radius + 5;
