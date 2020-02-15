@@ -1,5 +1,4 @@
 body {
-  background-color: #FBCA26;
   font-family: 'Montserrat', sans-serif;
   color: rgb(61, 59, 72);
 }
@@ -10,7 +9,6 @@ body {
 }
 
 .container {
-  border-radius: 1%;
   background-color: white;
   width: 100%;
   display: flex;
