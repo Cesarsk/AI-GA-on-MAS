@@ -23,7 +23,7 @@ var fps = 0;
 var frameWidth = 900;
 var frameHeight = 500;
 
-var backgroundColor = '#224762';
+var backgroundColor = '#075484';
 
 // html controllers
 function resetSimulation() {
@@ -31,6 +31,8 @@ function resetSimulation() {
     food = new Array();
     water = new Array();
     poison = new Array();
+    generation = 0;
+    maxFitness = 0;
 
     initElements();
 }
@@ -66,10 +68,10 @@ function initElements() {
 
 //Called (num_frames) per second.
 function draw() {
+    refreshPause();
     if (pauseEnabled == false) {
         // every 5 seconds generating new population
         if (frameCount % 150 == 0) {
-            //PER IL MOMENTO LO COMMENTO, POI LO STUDIO E ABILITO
             runGeneticAlgorithm();
         }
 
@@ -85,7 +87,6 @@ function draw() {
         drawElements();
         refreshParameters();
     }
-    refreshPause();
 }
 
 function drawElements() {
@@ -187,13 +188,22 @@ function runGeneticAlgorithm() {
     }
 
     // elitism
+
+    //Elitism involves copying a small proportion of the fittest candidates, unchanged, 
+    //into the next generation. This can sometimes have a dramatic impact on performance 
+    //by ensuring that the EA does not waste time re-discovering previously discarded partial solutions. 
+    //Candidate solutions that are preserved unchanged through elitism remain eligible for selection 
+    //as parents when breeding the remainder of the next generation.
+    
     var tempElitism = 0;
     if (elitism > population.length) {
         tempElitism = population.length;
     }
+
     else {
         tempElitism = elitism;
     }
+    
     for (var i = 0; i < tempElitism; i++) {
 
         var maxPopulationFitness = 0;
@@ -267,5 +277,4 @@ function runGeneticAlgorithm() {
     population.splice(0, population.length);
     population = newPopulation.slice();
     generation++;
-    //alert("new population is in the game");
 }
