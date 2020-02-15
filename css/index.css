@@ -1,7 +1,7 @@
 body {
   background-color: #FBCA26;
   font-family: 'Montserrat', sans-serif;
-  color: rgb(36, 35, 41);
+  color: rgb(61, 59, 72);
 }
 
 .title {
@@ -22,12 +22,12 @@ body {
 
 .signature {
   padding: 2%;
-  padding-top: 4%;
+  padding-top: 5%;
   text-decoration: none;
 }
 
 .mail {
-  padding-top: 5%;
+  padding-top: 10%;
 }
 
 a {

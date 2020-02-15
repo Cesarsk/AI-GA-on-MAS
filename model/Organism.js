@@ -18,9 +18,9 @@ function Organism() {
     this.sight = random(5, 35);
 
     // color
-    this.colorR = random(255);
-    this.colorG = random(255);
-    this.colorB = random(255);
+    this.colorR = '105';
+    this.colorG = '150';
+    this.colorB = '189';
 
     this.calculateFitness = function () {
         var score = 0;
@@ -224,7 +224,7 @@ function Organism() {
         // act like it is in the left upper corner
         translate(this.position.x, this.position.y);
         rotate(theta);
-
+        
         // draw an organism
         fill(this.colorR, this.colorG, this.colorB);
         stroke(this.colorG);
@@ -233,7 +233,7 @@ function Organism() {
 
         // draw sensor
         fill(255, 255, 255, 30);
-        stroke(0, 255, 0);
+        stroke(255, 255, 255);
         arc(0, 0, this.sight, this.sight, PI + PI / 4, PI + 3 * PI / 4);
         endShape(CLOSE);
         pop();

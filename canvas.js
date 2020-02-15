@@ -17,13 +17,13 @@ var randomWaterGeneration = 3;
 var randomPoisonGeneration = 3;
 
 var deathEnabled = false;
-var stop = false
+var pauseEnabled = false;
+var fps = 0;
 
 var frameWidth = 900;
 var frameHeight = 500;
 
-var fps = 0;
-var backgroundColor = 'black';
+var backgroundColor = '#224762';
 
 // html controllers
 function resetSimulation() {
@@ -66,7 +66,7 @@ function initElements() {
 
 //Called (num_frames) per second.
 function draw() {
-    if (stop == false) {
+    if (pauseEnabled == false) {
         // every 5 seconds generating new population
         if (frameCount % 150 == 0) {
             //PER IL MOMENTO LO COMMENTO, POI LO STUDIO E ABILITO
@@ -93,7 +93,7 @@ function drawElements() {
     for (var i = 0; i < food.length; i++) {
         fill(0, 255, 0);
         noStroke();
-        ellipse(food[i].x, food[i].y, 5);
+        ellipse(food[i].x, food[i].y, 5, 5);
     }
 
     // water
@@ -107,7 +107,7 @@ function drawElements() {
     for (var i = 0; i < poison.length; i++) {
         fill(255, 0, 0);
         noStroke();
-        ellipse(poison[i].x, poison[i].y, 5);
+        rect(poison[i].x, poison[i].y, 5, 5);
     }
 }
 
@@ -175,7 +175,7 @@ function refreshParameters() {
 }
 
 function refreshPause() {
-    stop = document.getElementById("pauseCheckbox").checked;
+    pauseEnabled = document.getElementById("pauseCheckbox").checked;
 }
 
 function runGeneticAlgorithm() {
