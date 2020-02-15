@@ -7,7 +7,7 @@ Entirely developed with P5 Library and Pure JS
 ### Instructions
 Run *index.html*
 
-### Demo
+### Demo
 Test the deployment here: https://cesarsk.github.io/AI-GA-on-CA/
 
 ### Copyright
