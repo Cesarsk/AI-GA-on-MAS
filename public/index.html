@@ -7,7 +7,6 @@
   <script src="model/Organism.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <title>AI - GA IN CELLULAR AUTOMATA</title>
-  <link rel="shortcut icon" href="/favicon.ico">
 </head>
 
 <body>
@@ -18,7 +17,7 @@
     </div>
 
     <div class="canvas" id="canvas">
-      <script src="model/canvas.js"></script>
+      <script src="canvas.js"></script>
     </div>
 
     <div class="tableDiv">
@@ -39,29 +38,29 @@
         </tr>
 
         <th>PARAMETERS</th>
-        <th>INPUT</th>
-
-        <tr>
-          <td><span>Play/Pause Simulation:</span></td>
-          <td><button onclick="pauseSimulation()">PLAY / PAUSE</button></td>
-        </tr>
+        <th>BUTTONS</th>
 
         <tr>
           <td><span>Reset Simulation:</span></td>
-          <td><button onclick="resetSimulation()">RESET</button></td>
+          <td><button onclick="resetSimulation()">Reset</button></td>
         </tr>
 
         <tr>
-          <td><span>Framerate (1 / 60):</span></td>
-          <td><input type="range" id="framerate" min="1" max="60" value="60"></td>
+          <td><span>Pause TEST Simulation:</span></td>
+          <td><button onclick="pauseSimulation()">PLAY/PAUSE</button></td>
         </tr>
 
       </table>
-
       <table id="table">
         <th>PARAMETERS</th>
         <th>CURRENT VALUE</th>
         <th>INPUT</th>
+
+        <tr>
+          <td><span>Framerate:</span></td>
+          <td><span id="framerateOutput"></span></td>
+          <td><input type="range" id="framerate" min="1" max="60" value="60"></td>
+        </tr>
 
         <tr>
           <td><span>Population size:</span></td>

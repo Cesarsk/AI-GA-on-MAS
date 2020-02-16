@@ -17,7 +17,7 @@ var randomWaterGeneration = 3;
 var randomPoisonGeneration = 3;
 
 var deathEnabled = false;
-var pauseEnabled = false;
+var pauseEnabled = true;
 var fps = 0;
 var mutationRateProb = 0;
 
@@ -26,6 +26,7 @@ var frameHeight = 500;
 
 var backgroundColor = '#075484';
 var textPauseColor;
+var frameCountTmp = 0;
 
 p5.disableFriendlyErrors = true; // disables FES
 
@@ -37,6 +38,8 @@ function resetSimulation() {
     poison = new Array();
     generation = 0;
     maxFitness = 0;
+    frameCount = 0;
+    frameCountTmp = 0;
 
     initElements();
 }
@@ -47,9 +50,9 @@ function setup() {
     cnv.parent('canvas');
     initElements();
     background(backgroundColor);
-
     textPauseColor = color(251, 202, 38);
     textPauseColor.setAlpha(1);
+    refreshParameters();
 }
 
 //Init Elements sets our elements of the simulation
@@ -79,7 +82,7 @@ function draw() {
     refreshPause();
     if (pauseEnabled == false) {
         // every 5 seconds generating new population
-        if (frameCount % 150 == 0) {
+        if (frameCount % (fps*5) == 0) {
             runGeneticAlgorithm();
         }
 
@@ -165,7 +168,7 @@ function refreshParameters() {
     document.getElementById("population").innerHTML = "" + generation;
 
     fps = parseInt(document.getElementById("framerate").value);
-    document.getElementById("framerateOutput").innerHTML = fps;
+    //document.getElementById("framerateOutput").innerHTML = fps;
     frameRate(fps);
 
     randomFoodGeneration = document.getElementById("randomFoodGeneration").value;
@@ -183,15 +186,24 @@ function refreshParameters() {
     deathEnabled = document.getElementById("deathCheckbox").checked;
 }
 
-function refreshPause() {
-    pauseEnabled = document.getElementById("pauseCheckbox").checked;
+function pauseSimulation() {
     if (pauseEnabled) {
+        //DISABILITA PAUSA
+        pauseEnabled = false;
+        frameCount = frameCountTmp;
+    } else {
+        //ABILITA PAUSA
+        pauseEnabled = true;
+        frameCountTmp = frameCount;
+    }
+}
 
+function refreshPause() {
+    if (pauseEnabled) {
         fill(textPauseColor);
-
         textSize(32);
         text("SIMULATION PAUSED", frameWidth / 3.3, frameHeight / 2 - 20);
-        text("TOGGLE PAUSE TO PLAY", frameWidth / 3.3 - 20, frameHeight / 2 + 40);
+        text("PRESS PAUSE TO PLAY", frameWidth / 3.3 - 20, frameHeight / 2 + 40);
     }
 }
 
@@ -199,8 +211,7 @@ function runGeneticAlgorithm() {
     var bestInPopulation = new Array();
 
     if (population.length < 10) {
-        alert("Population too small! Please reset simulation");
-        return;
+        //return;
     }
 
     // elitism
