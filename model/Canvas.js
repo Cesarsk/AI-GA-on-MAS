@@ -96,8 +96,8 @@ function draw() {
         removeDead();
         generateElements();
         drawElements();
-        refreshParameters();
     }
+    refreshParameters();
 }
 
 function drawElements() {
@@ -168,7 +168,7 @@ function refreshParameters() {
     document.getElementById("population").innerHTML = "" + generation;
 
     fps = parseInt(document.getElementById("framerate").value);
-    //document.getElementById("framerateOutput").innerHTML = fps;
+    document.getElementById("framerateOutput").innerHTML = "Framerate ("+fps+" / 60)";
     frameRate(fps);
 
     randomFoodGeneration = document.getElementById("randomFoodGeneration").value;
