@@ -14,17 +14,27 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+  /* Disable Text Selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }  
 
 .signature {
   padding: 2%;
   padding-top: 2%;
   text-decoration: none;
+  font-size: small;
 }
 
 .mail {
   justify-content: flex-end;
   padding-top: 5%;
+  font-size: smaller;
 }
 
 a {

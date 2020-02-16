@@ -25,6 +25,9 @@ var frameWidth = 900;
 var frameHeight = 500;
 
 var backgroundColor = '#075484';
+var textPauseColor;
+
+p5.disableFriendlyErrors = true; // disables FES
 
 // html controllers
 function resetSimulation() {
@@ -44,8 +47,12 @@ function setup() {
     cnv.parent('canvas');
     initElements();
     background(backgroundColor);
+
+    textPauseColor = color(251, 202, 38);
+    textPauseColor.setAlpha(1);
 }
 
+//Init Elements sets our elements of the simulation
 function initElements() {
     fps = parseInt(document.getElementById("framerate").value);
     frameRate(fps);
@@ -154,7 +161,7 @@ function removeDead() {
 }
 
 function refreshParameters() {
-    document.getElementById("fitness").innerHTML = "" + maxFitness;
+    document.getElementById("fitness").innerHTML = "" + maxFitness.toFixed(5);
     document.getElementById("population").innerHTML = "" + generation;
 
     fps = parseInt(document.getElementById("framerate").value);
@@ -178,6 +185,14 @@ function refreshParameters() {
 
 function refreshPause() {
     pauseEnabled = document.getElementById("pauseCheckbox").checked;
+    if (pauseEnabled) {
+
+        fill(textPauseColor);
+
+        textSize(32);
+        text("SIMULATION PAUSED", frameWidth / 3.3, frameHeight / 2 - 20);
+        text("TOGGLE PAUSE TO PLAY", frameWidth / 3.3 - 20, frameHeight / 2 + 40);
+    }
 }
 
 function runGeneticAlgorithm() {
