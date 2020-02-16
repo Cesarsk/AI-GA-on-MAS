@@ -47,7 +47,7 @@ function resetSimulation() {
 //Setup Canvas, Framerate and Init Elements
 function setup() {
     var cnv = createCanvas(frameWidth, frameHeight);
-    cnv.parent('canvas');
+    cnv.parent('Canvas');
     initElements();
     background(backgroundColor);
     textPauseColor = color(251, 202, 38);
