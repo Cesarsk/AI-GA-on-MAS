@@ -27,6 +27,7 @@ var frameHeight = 500;
 var backgroundColor = '#075484';
 var textPauseColor;
 var frameCountTmp = 0;
+var simulationOver = false;
 
 p5.disableFriendlyErrors = true; // disables FES
 
@@ -40,8 +41,10 @@ function resetSimulation() {
     maxFitness = 0;
     frameCount = 0;
     frameCountTmp = 0;
-
+    pauseEnabled = true;
+    simulationOver = false;
     initElements();
+    resetHistograms();
 }
 
 //Setup Canvas, Framerate and Init Elements
@@ -53,6 +56,7 @@ function setup() {
     textPauseColor = color(251, 202, 38);
     textPauseColor.setAlpha(1);
     refreshParameters();
+    testHistograms();
 }
 
 //Init Elements sets our elements of the simulation
@@ -77,13 +81,26 @@ function initElements() {
     }
 }
 
+function checkStopCondition() {
+    if(generation == 30) {
+        simulationOver = true;
+    }
+}
+
+function generateHistograms() {
+    updateHistogram();
+}
+
 //Called (num_frames) per second.
 function draw() {
+    checkStopCondition();
+    refreshStop();
     refreshPause();
-    if (pauseEnabled == false) {
+    if ((pauseEnabled || simulationOver) == false) {
         // every 5 seconds generating new population
-        if (frameCount % (fps*5) == 0) {
+        if (frameCount % (fps*2) == 0) {
             runGeneticAlgorithm();
+            generateHistograms();
         }
 
         // remove all elements from last frame
@@ -204,6 +221,16 @@ function refreshPause() {
         textSize(32);
         text("SIMULATION PAUSED", frameWidth / 3.3, frameHeight / 2 - 20);
         text("PRESS PAUSE TO PLAY", frameWidth / 3.3 - 20, frameHeight / 2 + 40);
+    }
+}
+
+function refreshStop() {
+    if (simulationOver) {
+        textPauseColor.setAlpha(5);
+        fill(textPauseColor);
+        textSize(32);
+        text("SIMULATION IS OVER", frameWidth / 3.3, frameHeight / 2 - 20);
+        text("CHECK STATS", frameWidth / 3.3 + 55, frameHeight / 2 + 40);
     }
 }
 

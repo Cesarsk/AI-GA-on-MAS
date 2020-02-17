@@ -26,3 +26,5 @@ Nota su istogrammi:
 Bugfix: sistemare il frameCount , quando parte la simulazione deve risultate uguale a 0, azzerare il frameCOunt nella funzione di frame va bene per l'istante iniziale 
 
 - Funzione di Export per istogrammi
+
+Aggiungere allo slider una funzionalità per controllare la condizione di arresto (numero generazioni max)
