@@ -5,6 +5,7 @@
   <script src="lib/plotly-latest.min.js"></script>
   <script src="lib/p5.js"></script>
   <script src="model/Organism.js"></script>
+  <script src="controller/Controller.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <title>AI - GA IN CELLULAR AUTOMATA</title>
   <link rel="shortcut icon" href="/favicon.ico">
@@ -42,26 +43,37 @@
         <th>INPUT</th>
 
         <tr>
-          <td><span>Play/Pause Simulation:</span></td>
-          <td><button onclick="pauseSimulation()">PLAY / PAUSE</button></td>
-        </tr>
-
-        <tr>
-          <td><span>Reset Simulation:</span></td>
-          <td><button onclick="resetSimulation()">RESET</button></td>
-        </tr>
-
-        <tr>
           <td><span id="framerateOutput">Framerate (1 / 60):</span></td>
           <td><input type="range" id="framerate" min="1" max="60" value="60"></td>
         </tr>
 
+        <tr>
+          <td><span>Start Simulation:</span></td>
+          <td><button id="startButton" onclick="startSimulation()">START</button></td>
+        </tr>
+
+        <tr>
+          <td><span>Freeze Simulation:</span></td>
+          <td><button id="pauseButton" onclick="pauseSimulation()">PAUSE</button></td>
+        </tr>
+
+        <tr>
+          <td><span>Stop Simulation:</span></td>
+          <td><button id="stopButton" onclick="stopSimulation()">STOP</button></td>
+        </tr>
+    
       </table>
 
       <table id="table">
         <th>PARAMETERS</th>
         <th>CURRENT VALUE</th>
         <th>INPUT</th>
+
+        <tr>
+          <td><span>Max Generations:</span></td>
+          <td><span id="maxGenerationsOutput"></span></td>
+          <td><input type="range" id="maxGenerations" min="1" max="50" value="30"></td>
+        </tr>
 
         <tr>
           <td><span>Population size:</span></td>

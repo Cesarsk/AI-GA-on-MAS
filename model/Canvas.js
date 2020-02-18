@@ -17,7 +17,6 @@ var randomWaterGeneration = 3;
 var randomPoisonGeneration = 3;
 
 var deathEnabled = false;
-var pauseEnabled = true;
 var fps = 0;
 var mutationRateProb = 0;
 
@@ -27,25 +26,10 @@ var frameHeight = 500;
 var backgroundColor = '#075484';
 var textPauseColor;
 var frameCountTmp = 0;
-var simulationOver = false;
+var simulationState = 0; //0: Stopped, 1: Running, 2: Paused
+var maxGenerations;
 
 p5.disableFriendlyErrors = true; // disables FES
-
-// html controllers
-function resetSimulation() {
-    population = new Array();
-    food = new Array();
-    water = new Array();
-    poison = new Array();
-    generation = 0;
-    maxFitness = 0;
-    frameCount = 0;
-    frameCountTmp = 0;
-    pauseEnabled = true;
-    simulationOver = false;
-    initElements();
-    resetHistograms();
-}
 
 //Setup Canvas, Framerate and Init Elements
 function setup() {
@@ -56,14 +40,12 @@ function setup() {
     textPauseColor = color(251, 202, 38);
     textPauseColor.setAlpha(1);
     refreshParameters();
-    testHistograms();
+    fps = parseInt(document.getElementById("framerate").value);
+    frameRate(fps);
 }
 
 //Init Elements sets our elements of the simulation
 function initElements() {
-    fps = parseInt(document.getElementById("framerate").value);
-    frameRate(fps);
-
     for (var i = 0; i < populationSize; i++) {
         population.push(new Organism());
     }
@@ -81,40 +63,66 @@ function initElements() {
     }
 }
 
-function checkStopCondition() {
-    if(generation == 30) {
-        simulationOver = true;
-    }
-}
+
 
 function generateHistograms() {
-    updateHistogram();
+    updateHistograms();
 }
 
-//Called (num_frames) per second.
+function drawPause() {
+    fill(textPauseColor);
+    textSize(32);
+    text("SIMULATION PAUSED", frameWidth / 3.3, frameHeight / 2 - 20);
+    text("PRESS PAUSE TO PLAY", frameWidth / 3.3 - 20, frameHeight / 2 + 40);
+}
+
+function clearBackground() {
+    clear();
+    background(backgroundColor);
+}
+
+function drawStop() {
+    textPauseColor.setAlpha(5);
+    fill(textPauseColor);
+    textSize(32);
+    text("CHECK STATS OR START OVER", frameWidth / 3.3 - 55, frameHeight / 2 + 40);
+    text("SIMULATION STOPPED", frameWidth / 3.3, frameHeight / 2 - 20);
+}
+
+//Called fps times per second.
 function draw() {
-    checkStopCondition();
-    refreshStop();
-    refreshPause();
-    if ((pauseEnabled || simulationOver) == false) {
-        // every 5 seconds generating new population
-        if (frameCount % (fps*2) == 0) {
-            runGeneticAlgorithm();
-            generateHistograms();
-        }
-
-        // remove all elements from last frame
-        clear();
-
-        // background needs to be refreshed as well
-        background(backgroundColor);
-
-        // funcs to call
-        removeDead();
-        generateElements();
-        drawElements();
-    }
+    checkEndingCondition();
     refreshParameters();
+
+    if (simulationState == 0) {
+        drawStop();
+    }
+    if (simulationState == 1) {
+        runSimulation();
+    }
+    if (simulationState == 2) {
+        drawPause();
+    }
+}
+
+function runSimulation() {
+    simulationState = 1;
+    // every 5 seconds generating new population
+    if (frameCount % (fps * 2) == 0) {
+        runGeneticAlgorithm();
+        generateHistograms();
+    }
+
+    // remove all elements from last frame
+    clear();
+
+    // background needs to be refreshed as well
+    background(backgroundColor);
+
+    // funcs to call
+    removeDead();
+    generateElements();
+    drawElements();
 }
 
 function drawElements() {
@@ -177,60 +185,6 @@ function removeDead() {
                 population.splice(i, 1);
             }
         }
-    }
-}
-
-function refreshParameters() {
-    document.getElementById("fitness").innerHTML = "" + maxFitness.toFixed(5);
-    document.getElementById("population").innerHTML = "" + generation;
-
-    fps = parseInt(document.getElementById("framerate").value);
-    document.getElementById("framerateOutput").innerHTML = "Framerate ("+fps+" / 60)";
-    frameRate(fps);
-
-    randomFoodGeneration = document.getElementById("randomFoodGeneration").value;
-    document.getElementById("randomFoodGenerationOutput").innerHTML = randomFoodGeneration;
-
-    populationSize = document.getElementById("populationSize").value;
-    document.getElementById("populationSizeOutput").innerHTML = populationSize;
-
-    elitism = document.getElementById("elitism").value;
-    document.getElementById("elitismOutput").innerHTML = elitism;
-
-    mutationRate = document.getElementById("mutationRate").value * 0.01;
-    document.getElementById("mutationRateOutput").innerHTML = mutationRate.toFixed(2);
-
-    deathEnabled = document.getElementById("deathCheckbox").checked;
-}
-
-function pauseSimulation() {
-    if (pauseEnabled) {
-        //DISABILITA PAUSA
-        pauseEnabled = false;
-        frameCount = frameCountTmp;
-    } else {
-        //ABILITA PAUSA
-        pauseEnabled = true;
-        frameCountTmp = frameCount;
-    }
-}
-
-function refreshPause() {
-    if (pauseEnabled) {
-        fill(textPauseColor);
-        textSize(32);
-        text("SIMULATION PAUSED", frameWidth / 3.3, frameHeight / 2 - 20);
-        text("PRESS PAUSE TO PLAY", frameWidth / 3.3 - 20, frameHeight / 2 + 40);
-    }
-}
-
-function refreshStop() {
-    if (simulationOver) {
-        textPauseColor.setAlpha(5);
-        fill(textPauseColor);
-        textSize(32);
-        text("SIMULATION IS OVER", frameWidth / 3.3, frameHeight / 2 - 20);
-        text("CHECK STATS", frameWidth / 3.3 + 55, frameHeight / 2 + 40);
     }
 }
 
