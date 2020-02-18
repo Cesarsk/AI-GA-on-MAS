@@ -24,6 +24,9 @@ var frameWidth = 900;
 var frameHeight = 500;
 
 var numberOfDead = 0;
+var numberOfPoisonEaten = 0;
+var numberOfFoodEaten = 0;
+
 var backgroundColor = '#075484';
 var textPauseColor;
 var frameCountTmp = 0;
@@ -93,6 +96,8 @@ function runSimulation() {
         runGeneticAlgorithm();
         generateHistograms();
         numberOfDead = 0;
+        numberOfPoisonEaten = 0;
+        numberOfFoodEaten = 0;
     }
     
     // remove all elements from last frame
@@ -116,11 +121,11 @@ function initElements() {
     for (var i = 0; i < numberOfFood; i++) {
         food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
     }
-
+/*
     for (var i = 0; i < numberOfWater; i++) {
         water.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
     }
-
+*/
     for (var i = 0; i < numberOfPoison; i++) {
         poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
     }
@@ -156,7 +161,7 @@ function generateElements() {
             food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
         }
     }
-    
+/*
     // random water generation
     if (random(1) < 0.3) {
         for (var i = 0; i < randomFoodGeneration; i++) {
@@ -165,7 +170,7 @@ function generateElements() {
             }
         }
     }
-
+*/
     // random poison generation
     if (random(1) < 0.3) {
         for (var i = 0; i < randomPoisonGeneration; i++) {

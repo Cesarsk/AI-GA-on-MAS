@@ -63,6 +63,7 @@ function refreshValues() {
 function startSimulation() {
     resetSimulation();
     simulationState = 1;
+    resetHistograms();
 }
 
 function stopSimulation() {
@@ -106,5 +107,4 @@ function resetSimulation() {
     yDeaths = new Array();
     clearBackground();
     initElements();
-    resetHistograms(); //QUESTO e' DA VERIFICARE
 }
