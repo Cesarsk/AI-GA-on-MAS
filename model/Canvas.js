@@ -88,7 +88,7 @@ function draw() {
 function runSimulation() {
     simulationState = 1;
     // every 5 seconds generating new population
-    if (frameCount % fps == 0) {
+    if (frameCount % (fps * 5) == 0) {
         runGeneticAlgorithm();
         generateHistograms();
         numberOfDeaths = 0;
