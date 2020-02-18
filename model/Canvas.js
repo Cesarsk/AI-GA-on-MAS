@@ -29,7 +29,6 @@ var textPauseColor = '';
 var frameCountTmp = 0;
 var simulationState = 0; //0: Stopped, 1: Running, 2: Paused
 var maxGenerations = '';
-var secondsBeforeNewGen = 5;
 
 p5.disableFriendlyErrors = true; // disables FES
 
@@ -89,7 +88,7 @@ function draw() {
 function runSimulation() {
     simulationState = 1;
     // every 5 seconds generating new population
-    if (frameCount % (fps * secondsBeforeNewGen) == 0) {
+    if (frameCount % fps == 0) {
         runGeneticAlgorithm();
         generateHistograms();
         numberOfDeaths = 0;
