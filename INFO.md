@@ -7,7 +7,7 @@ Visualization simulates the simplified artificial Life. We simulate a corpulent 
 Rules:
 
 It is for individuals to survive in the system for as long as possible.
-The eater feeds on food and water, but there's also poison that reduces it.
+The eater feeds on food, but there's also poison that reduces it.
 
 If you see the food is close enough, the individual can detect with the sensor, if the sensor is sufficient good range.
 

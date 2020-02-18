@@ -26,6 +26,7 @@
     <div class="instructions">
       <p> Abstract: This is an application of GA (Genetic Algorithm) in a Cellular Automata. Organisms are going to
         evolve over generations and learn how to eat FOOD (GREEN) and avoid POISON (RED). Stats are generated dinamycally during execution. It's possible to tune the parameters only before starting the simulation.
+        Tuning needs to be taken with delicacy since a severe tuning against the Organisms may extinct the whole population.
       </p>
     </div>
 
@@ -85,13 +86,19 @@
         <tr>
           <td><span>Population size:</span></td>
           <td><span id="populationSizeOutput"></span></td>
-          <td><input type="range" id="populationSize" min="10" max="200" value="50"></td>
+          <td><input type="range" id="populationSize" min="20" max="200" value="50"></td>
         </tr>
 
         <tr>
           <td><span>Food spawn rate:</span></td>
           <td><span id="randomFoodGenerationOutput"></span></td>
-          <td><input type="range" min="0" max="10" id="randomFoodGeneration" value="3"></td>
+          <td><input type="range" min="0" max="10" id="randomFoodGeneration" value="5"></td>
+        </tr>
+
+        <tr>
+          <td><span>Poison spawn rate:</span></td>
+          <td><span id="randomPoisonGenerationOutput"></span></td>
+          <td><input type="range" min="0" max="10" id="randomPoisonGeneration" value="2"></td>
         </tr>
 
         <tr>

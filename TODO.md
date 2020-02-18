@@ -12,6 +12,7 @@
 [x] Sistemare il frameCount, quando parte la simulazione deve risultate uguale a 0, azzerare il frameCount nella funzione di frame va bene per l'istante iniziale 
 [] Il numero di morti sembra impreciso nell'istogramma.
 [] Perche' gli organismi non crescono piu tanto?
+[] Controllare Food Spawn Rate e Poison Spawn Rate
 
 ## Istogrammi:
 [x] Aggiungere parametri usati nella simulazione ai dati come label

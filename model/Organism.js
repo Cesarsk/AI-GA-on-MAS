@@ -85,21 +85,6 @@ class Organism {
                 this.health += 50;
             }
             
-            // drink water
-            minDistance = Infinity;
-            minIndex = -1;
-            for (var i = 0; i < water.length; i++) {
-                var distance = int(dist(this.position.x, this.position.y, water[i].x, water[i].y));
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    minIndex = i;
-                }
-            }
-            if (minDistance < this.radius) {
-                water.splice(minIndex, 1);
-                this.health += 10;
-            }
-            
             // poison
             minDistance = Infinity;
             minIndex = -1;

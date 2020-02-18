@@ -1,6 +1,5 @@
 var population = new Array();
 var food = new Array();
-var water = new Array();
 var poison = new Array();
 
 var elitism = 5;
@@ -8,12 +7,10 @@ var generation = 0;
 var populationSize = 30;
 var mutationRate = 0.9;
 var numberOfFood = 200;
-var numberOfWater = 50;
 var numberOfPoison = 30;
 var maxFitness = 0;
 
 var randomFoodGeneration = 15;
-var randomWaterGeneration = 3;
 var randomPoisonGeneration = 3;
 
 var deathEnabled = false;
@@ -28,10 +25,10 @@ var numberOfPoisonsEaten = 0;
 var numberOfFoodsEaten = 0;
 
 var backgroundColor = '#075484';
-var textPauseColor;
+var textPauseColor = '';
 var frameCountTmp = 0;
 var simulationState = 0; //0: Stopped, 1: Running, 2: Paused
-var maxGenerations;
+var maxGenerations = '';
 var secondsBeforeNewGen = 5;
 
 p5.disableFriendlyErrors = true; // disables FES
@@ -69,15 +66,15 @@ function drawStop() {
     textPauseColor.setAlpha(5);
     fill(textPauseColor);
     textSize(32);
+    text("SIMULATION FINISHED", frameWidth / 3.3, frameHeight / 2 - 20);
     text("CHECK STATS OR START OVER", frameWidth / 3.3 - 55, frameHeight / 2 + 40);
-    text("SIMULATION STOPPED", frameWidth / 3.3, frameHeight / 2 - 20);
 }
 
 //Called fps times per second.
 function draw() {
     checkEndingCondition();
     refreshParameters();
-    
+
     if (simulationState == 0) {
         drawStop();
     }
@@ -99,13 +96,13 @@ function runSimulation() {
         numberOfPoisonsEaten = 0;
         numberOfFoodsEaten = 0;
     }
-    
+
     // remove all elements from last frame
     clear();
-    
+
     // background needs to be refreshed as well
     background(backgroundColor);
-    
+
     // funcs to call
     removeDead();
     generateElements();
@@ -118,15 +115,11 @@ function initElements() {
         population.push(new Organism());
     }
 
-    for (var i = 0; i < numberOfFood; i++) {
+    for (var i = 0; i < numberOfFood*0.1*randomFoodGeneration; i++) {
         food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
     }
-/*
-    for (var i = 0; i < numberOfWater; i++) {
-        water.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
-    }
-*/
-    for (var i = 0; i < numberOfPoison; i++) {
+
+    for (var i = 0; i < numberOfPoison*0.1*randomPoisonGeneration; i++) {
         poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
     }
 }
@@ -138,14 +131,7 @@ function drawElements() {
         noStroke();
         ellipse(food[i].x, food[i].y, 5, 5);
     }
-    
-    // water
-    for (var i = 0; i < water.length; i++) {
-        fill(0, 191, 255);
-        noStroke();
-        ellipse(water[i].x, water[i].y, 5);
-    }
-    
+
     // poison
     for (var i = 0; i < poison.length; i++) {
         fill(255, 0, 0);
@@ -161,21 +147,12 @@ function generateElements() {
             food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
         }
     }
-/*
-    // random water generation
-    if (random(1) < 0.3) {
-        for (var i = 0; i < randomFoodGeneration; i++) {
-            if (random(1) < 0.1) {
-                water.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
-            }
-        }
-    }
-*/
+
     // random poison generation
     if (random(1) < 0.3) {
         for (var i = 0; i < randomPoisonGeneration; i++) {
             if (random(1) < 0.1) {
-                poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
+            poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
             }
         }
     }
@@ -199,7 +176,8 @@ function runGeneticAlgorithm() {
     var bestInPopulation = new Array();
 
     if (population.length < 10) {
-        //return;
+        simulationState = 0;
+        return;
     }
 
     // elitism
@@ -257,46 +235,48 @@ function runGeneticAlgorithm() {
         var parent1 = population[Math.floor(random(population.length))];
         var parent2 = population[Math.floor(random(population.length))];
         var child = new Organism();
+        console.log(child);
+        if (child != null) {
+            if (random(1) < 0.5) {
+                child.radius = parent1.radius;
+            }
+            else {
+                child.radius = parent2.radius;
+            }
 
-        if (random(1) < 0.5) {
-            child.radius = parent1.radius;
-        }
-        else {
-            child.radius = parent2.radius;
-        }
+            if (random(1) < 0.5) {
+                child.sight = parent1.sight;
+            }
+            else {
+                child.sight = parent2.sight;
+            }
 
-        if (random(1) < 0.5) {
-            child.sight = parent1.sight;
-        }
-        else {
-            child.sight = parent2.sight;
-        }
+            if (random(1) < 0.5) {
+                child.maxForce = parent1.maxForce;
+            }
+            else {
+                child.maxForce = parent2.maxForce;
+            }
 
-        if (random(1) < 0.5) {
-            child.maxForce = parent1.maxForce;
-        }
-        else {
-            child.maxForce = parent2.maxForce;
-        }
+            if (random(1) < 0.5) {
+                child.maxSpeed = parent1.maxSpeed;
+            }
+            else {
+                child.maxSpeed = parent2.maxSpeed;
+            }
 
-        if (random(1) < 0.5) {
-            child.maxSpeed = parent1.maxSpeed;
-        }
-        else {
-            child.maxSpeed = parent2.maxSpeed;
-        }
+            // mutation
+            mutationRateProb = random(1);
+            if (mutationRateProb <= mutationRate) {
+                child.randomMutation();
+            }
 
-        // mutation
-        mutationRateProb = random(1);
-        if (mutationRateProb <= mutationRate) {
-            child.randomMutation();
-        }
+            if (child.radius > child.sight) {
+                child.sight = child.radius + 5;
+            }
 
-        if (child.radius > child.sight) {
-            child.sight = child.radius + 5;
+            newPopulation.push(child);
         }
-
-        newPopulation.push(child);
     }
 
     population.splice(0, population.length);

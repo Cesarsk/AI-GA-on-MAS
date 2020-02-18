@@ -4,6 +4,7 @@ function refreshParameters() {
         document.getElementById("maxGenerations").disabled = false;
         document.getElementById("populationSize").disabled = false;
         document.getElementById("randomFoodGeneration").disabled = false;
+        document.getElementById("randomPoisonGeneration").disabled = false;
         document.getElementById("elitism").disabled = false;
         document.getElementById("mutationRate").disabled = false;
         document.getElementById("deathCheckbox").disabled = false;
@@ -15,6 +16,7 @@ function refreshParameters() {
         document.getElementById("maxGenerations").disabled = true;
         document.getElementById("populationSize").disabled = true;
         document.getElementById("randomFoodGeneration").disabled = true;
+        document.getElementById("randomPoisonGeneration").disabled = true;
         document.getElementById("elitism").disabled = true;
         document.getElementById("mutationRate").disabled = true;
         document.getElementById("deathCheckbox").disabled = true;
@@ -25,6 +27,7 @@ function refreshParameters() {
         document.getElementById("maxGenerations").disabled = true;
         document.getElementById("populationSize").disabled = true;
         document.getElementById("randomFoodGeneration").disabled = true;
+        document.getElementById("randomPoisonGeneration").disabled = true;
         document.getElementById("elitism").disabled = true;
         document.getElementById("mutationRate").disabled = true;
         document.getElementById("deathCheckbox").disabled = true;
@@ -47,6 +50,9 @@ function refreshValues() {
 
     randomFoodGeneration = document.getElementById("randomFoodGeneration").value;
     document.getElementById("randomFoodGenerationOutput").innerHTML = randomFoodGeneration;
+    
+    randomPoisonGeneration = document.getElementById("randomPoisonGeneration").value;
+    document.getElementById("randomPoisonGenerationOutput").innerHTML = randomPoisonGeneration;
 
     populationSize = document.getElementById("populationSize").value;
     document.getElementById("populationSizeOutput").innerHTML = populationSize;
@@ -96,7 +102,6 @@ function checkEndingCondition() {
 function resetSimulation() {
     population = new Array();
     food = new Array();
-    water = new Array();
     poison = new Array();
     generation = 0;
     maxFitness = 0;
