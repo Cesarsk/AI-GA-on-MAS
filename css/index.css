@@ -73,3 +73,8 @@ a {
   background-color: #FBCA26;
   color: white;
 }
+
+.instructions {
+  padding: 5px;
+  width: 75%;
+}

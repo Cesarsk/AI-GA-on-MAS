@@ -81,7 +81,7 @@ class Organism {
             }
             if (minDistance < this.radius) {
                 food.splice(minIndex, 1);
-                numberOfFoodEaten++;
+                numberOfFoodsEaten++;
                 this.health += 50;
             }
             
@@ -112,7 +112,7 @@ class Organism {
             }
             if (minDistance < this.radius) {
                 poison.splice(minIndex, 1);
-                numberOfPoisonEaten++;
+                numberOfPoisonsEaten++;
                 this.health -= 80;
             }
         };

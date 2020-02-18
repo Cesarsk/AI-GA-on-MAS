@@ -23,9 +23,9 @@ var mutationRateProb = 0;
 var frameWidth = 900;
 var frameHeight = 500;
 
-var numberOfDead = 0;
-var numberOfPoisonEaten = 0;
-var numberOfFoodEaten = 0;
+var numberOfDeaths = 0;
+var numberOfPoisonsEaten = 0;
+var numberOfFoodsEaten = 0;
 
 var backgroundColor = '#075484';
 var textPauseColor;
@@ -95,9 +95,9 @@ function runSimulation() {
     if (frameCount % (fps * secondsBeforeNewGen) == 0) {
         runGeneticAlgorithm();
         generateHistograms();
-        numberOfDead = 0;
-        numberOfPoisonEaten = 0;
-        numberOfFoodEaten = 0;
+        numberOfDeaths = 0;
+        numberOfPoisonsEaten = 0;
+        numberOfFoodsEaten = 0;
     }
     
     // remove all elements from last frame
@@ -188,7 +188,7 @@ function removeDead() {
         // death   
         if (deathEnabled == true) {
             if (population[i].health <= 0) {
-                numberOfDead++;
+                numberOfDeaths++;
                 population.splice(i, 1);
             }
         }

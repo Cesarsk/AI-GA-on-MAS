@@ -49,46 +49,27 @@ var genTitle = "";
 function updateHistograms() {
   genTitle = "P: "+populationSize+"; FR: "+randomFoodGeneration+"; E: "+elitism+'; MR: '+mutationRate+"; D: "+deathEnabled+";";
   x.push(generation);
-  updateHistMaxFitness();
-  updateHistDeaths();
-  updateHistFoods();
-  updateHistPoisons();
+  
+  updateHistogram("HistogramFitness",layoutMaxFitness,
+  'Max Fitness',dataMaxFitness,yFitness,maxFitness);
+
+  updateHistogram("HistogramDeaths",layoutDeaths,
+  'Deaths',dataDeaths,yDeaths,numberOfDeaths);
+
+  updateHistogram("HistogramFoods",layoutFoods,
+  'Foods',dataFoods,yFoods,numberOfFoodsEaten);
+
+  updateHistogram("HistogramPoisons",layoutPoisons,
+  'Poisons',dataPoisons,yPoisons,numberOfPoisonsEaten);
 }
 
-function updateHistMaxFitness() {
-  document.getElementById("HistogramFitness").style.display = 'inherit'; //visible hidden
-  layoutMaxFitness.title = genTitle;
-  layoutMaxFitness.yaxis.title = 'Max Fitness';
-  dataMaxFitness.y = yFitness;
-  yFitness.push(maxFitness);
-  Plotly.newPlot('HistogramFitness', [dataMaxFitness], layoutMaxFitness);
-}
-
-function updateHistDeaths() {
-  document.getElementById("HistogramDeaths").style.display = 'inherit'; //visible hidden
-  layoutDeaths.title = genTitle;
-  layoutDeaths.yaxis.title = 'Deaths';
-  dataDeaths.y = yDeaths;
-  yDeaths.push(numberOfDead);
-  Plotly.newPlot('HistogramDeaths', [dataDeaths], layoutDeaths);
-}
-
-function updateHistFoods() {
-  document.getElementById("HistogramFoods").style.display = 'inherit'; //visible hidden
-  layoutFoods.title = genTitle;
-  layoutFoods.yaxis.title = 'Foods';
-  dataFoods.y = yFoods;
-  yFoods.push(numberOfFoodEaten);
-  Plotly.newPlot('HistogramFoods', [dataFoods], layoutFoods);
-}
-
-function updateHistPoisons() {
-  document.getElementById("HistogramPoisons").style.display = 'inherit'; //visible hidden
-  layoutPoisons.title = genTitle;
-  layoutPoisons.yaxis.title = 'Poisons';
-  dataPoisons.y = yPoisons;
-  yPoisons.push(numberOfPoisonEaten);
-  Plotly.newPlot('HistogramPoisons', [dataPoisons], layoutPoisons);
+function updateHistogram(id, layout, layoutTitle, data, y, value) {
+  document.getElementById(id).style.display = 'inherit'; //visible hidden
+  layout.title = genTitle;
+  layout.yaxis.title = layoutTitle;
+  data.y = y;
+  y.push(value);
+  Plotly.newPlot(id, [data], layout);
 }
 
 function resetHistograms() {
@@ -96,23 +77,4 @@ function resetHistograms() {
   document.getElementById("HistogramDeaths").style.display = 'none'; //visible hidden
   document.getElementById("HistogramFoods").style.display = 'none'; //visible hidden
   document.getElementById("HistogramPoisons").style.display = 'none'; //visible hidden
-}
-
-function testHistogram() {
-  var data = [{
-    type: 'bar',
-    x: x,
-    y: y,
-  }];
-
-  var layout = {
-    xaxis: {
-      'tickformat': ',d'
-    },
-    yaxis: {
-      side: 'left'
-    }
-  }
-
-  Plotly.newPlot('Histogram', data, layout);
 }

@@ -1,17 +1,17 @@
-# GENERAL TO DO LIST
+# General TO DO List:
+[] Refactor Code
+[] Documentation
+[] Change Style canvas
+[] Study GA
+[] Pre-made experiments
+[] RANDOM FOOD SPAWN RATE?
+[] RANDOM POISON SPAWN RATE?
+[x] Aggiungere Instructions
 
-- Refactor Code
-- Documentation
-- Experiments
-- Stats
-- Change Style canvas
-- Study GA
-
-[] Aggiungere Instructions
-
-## Criteri di arresto: 
-[x] Fissare un numero massimo (controllabile) Kmax di iterazioni (o generazioni);
-- Fissare un tempo di esecuzione limite Tmax;
+## Bugfix:
+[x] Sistemare il frameCount, quando parte la simulazione deve risultate uguale a 0, azzerare il frameCount nella funzione di frame va bene per l'istante iniziale 
+[] Il numero di morti sembra impreciso nell'istogramma.
+[] Perche' gli organismi non crescono piu tanto?
 
 ## Istogrammi:
 [x] Aggiungere parametri usati nella simulazione ai dati come label
@@ -24,16 +24,11 @@
 [x] istogramma3: generazione / numero veleni mangiati
 [x] istogramma4: generazione / maxFitness
 
-## Bugfix:
-[x] Bugfix: sistemare il frameCount , quando parte la simulazione deve risultate uguale a 0, azzerare il frameCOunt nella funzione di frame va bene per l'istante iniziale 
-[] Il numero di morti sembra impreciso nell'istogramma.
-
-[] RANDOM FOOD SPAWN RATE?
-[] RANDOM POISON SPAWN RATE?
-[] Perche' gli organismi non crescono piu tanto?
-[] Pre-made experiments
-
 ## Vari:
-
 [?] Funzione di Export per istogrammi: e' già possibile salvarli come png. Export in .zip?
 [?] Disattivare Istogram Morti se Death è disabilitata.
+[?] Fissare un tempo di esecuzione limite Tmax;
+
+## Criteri di arresto: 
+[x] Fissare un numero massimo (controllabile) Kmax di iterazioni (o generazioni);
+
