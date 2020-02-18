@@ -23,11 +23,13 @@ var mutationRateProb = 0;
 var frameWidth = 900;
 var frameHeight = 500;
 
+var numberOfDead = 0;
 var backgroundColor = '#075484';
 var textPauseColor;
 var frameCountTmp = 0;
 var simulationState = 0; //0: Stopped, 1: Running, 2: Paused
 var maxGenerations;
+var secondsBeforeNewGen = 5;
 
 p5.disableFriendlyErrors = true; // disables FES
 
@@ -43,27 +45,6 @@ function setup() {
     fps = parseInt(document.getElementById("framerate").value);
     frameRate(fps);
 }
-
-//Init Elements sets our elements of the simulation
-function initElements() {
-    for (var i = 0; i < populationSize; i++) {
-        population.push(new Organism());
-    }
-
-    for (var i = 0; i < numberOfFood; i++) {
-        food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
-    }
-
-    for (var i = 0; i < numberOfWater; i++) {
-        water.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
-    }
-
-    for (var i = 0; i < numberOfPoison; i++) {
-        poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
-    }
-}
-
-
 
 function generateHistograms() {
     updateHistograms();
@@ -93,7 +74,7 @@ function drawStop() {
 function draw() {
     checkEndingCondition();
     refreshParameters();
-
+    
     if (simulationState == 0) {
         drawStop();
     }
@@ -108,21 +89,41 @@ function draw() {
 function runSimulation() {
     simulationState = 1;
     // every 5 seconds generating new population
-    if (frameCount % (fps * 2) == 0) {
+    if (frameCount % (fps * secondsBeforeNewGen) == 0) {
         runGeneticAlgorithm();
         generateHistograms();
+        numberOfDead = 0;
     }
-
+    
     // remove all elements from last frame
     clear();
-
+    
     // background needs to be refreshed as well
     background(backgroundColor);
-
+    
     // funcs to call
     removeDead();
     generateElements();
     drawElements();
+}
+
+//Init Elements sets our elements of the simulation
+function initElements() {
+    for (var i = 0; i < populationSize; i++) {
+        population.push(new Organism());
+    }
+
+    for (var i = 0; i < numberOfFood; i++) {
+        food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
+    }
+
+    for (var i = 0; i < numberOfWater; i++) {
+        water.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
+    }
+
+    for (var i = 0; i < numberOfPoison; i++) {
+        poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
+    }
 }
 
 function drawElements() {
@@ -132,14 +133,14 @@ function drawElements() {
         noStroke();
         ellipse(food[i].x, food[i].y, 5, 5);
     }
-
+    
     // water
     for (var i = 0; i < water.length; i++) {
         fill(0, 191, 255);
         noStroke();
         ellipse(water[i].x, water[i].y, 5);
     }
-
+    
     // poison
     for (var i = 0; i < poison.length; i++) {
         fill(255, 0, 0);
@@ -155,7 +156,7 @@ function generateElements() {
             food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
         }
     }
-
+    
     // random water generation
     if (random(1) < 0.3) {
         for (var i = 0; i < randomFoodGeneration; i++) {
@@ -182,6 +183,7 @@ function removeDead() {
         // death   
         if (deathEnabled == true) {
             if (population[i].health <= 0) {
+                numberOfDead++;
                 population.splice(i, 1);
             }
         }

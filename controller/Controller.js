@@ -1,7 +1,6 @@
 function refreshParameters() {
     if (simulationState == 0) {
         refreshValues();
-
         document.getElementById("maxGenerations").disabled = false;
         document.getElementById("populationSize").disabled = false;
         document.getElementById("randomFoodGeneration").disabled = false;
@@ -69,6 +68,7 @@ function startSimulation() {
 function stopSimulation() {
     resetSimulation();
     simulationState = 0;
+    document.getElementById("pauseButton").innerHTML = "PAUSE";
 }
 
 function pauseSimulation() {
@@ -101,6 +101,9 @@ function resetSimulation() {
     maxFitness = 0;
     frameCount = 0;
     frameCountTmp = 0;
+    x = new Array();
+    yFitness = new Array();
+    yDeaths = new Array();
     clearBackground();
     initElements();
     resetHistograms(); //QUESTO e' DA VERIFICARE
