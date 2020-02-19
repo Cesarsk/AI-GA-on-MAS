@@ -10,6 +10,7 @@ body {
 
 .container {
   width: 100%;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +34,7 @@ body {
 
 .mail {
   justify-content: flex-end;
-  padding-top: 5%;
+  padding-top: 1%;
   font-size: smaller;
 }
 
@@ -42,14 +43,35 @@ a {
   color: #FBCA26;    
 }
 
+p {
+  padding-top: 10px;
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .Canvas {
   border:10px solid #FBCA26;
   border-radius: 12px;
 }
 
-.tableDiv {
-  padding-top: 0%;
+.tableContainer {
+  width: 1000px;
+  align-items: flex-start;
   display: flex;
+  flex-wrap: wrap;
+}
+
+.tableDivRow1 {
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 0 45%;
+}
+
+.tableDivRow2 {
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 0 45%;
 }
 
 #table {

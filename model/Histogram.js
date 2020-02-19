@@ -47,7 +47,7 @@ var yPoisons = new Array();
 var genTitle = "";
 
 function updateHistograms() {
-  genTitle = "P: "+populationSize+"; FR: "+randomFoodGeneration+"; E: "+elitism+'; MR: '+mutationRate+"; D: "+deathEnabled+";";
+  genTitle = "P: "+populationSize+"; FR: "+randomFoodGeneration+"; PR: "+randomPoisonGeneration+"; E: "+elitism+"; MR: "+mutationRate+"; D: "+deathEnabled+";";
   x.push(generation);
   
   updateHistogram("HistogramFitness",layoutMaxFitness,

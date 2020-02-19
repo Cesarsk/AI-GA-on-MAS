@@ -25,123 +25,158 @@
 
     <div class="instructions">
       <p> Abstract: This is an application of GA (Genetic Algorithm) in a Cellular Automata. Organisms are going to
-        evolve over generations and learn how to eat FOOD (GREEN) and avoid POISON (RED). Stats are generated dinamycally during execution. It's possible to tune the parameters only before starting the simulation.
-        Tuning needs to be taken with delicacy since a severe tuning against the Organisms may extinct the whole population.
+        evolve over generations and learn how to eat FOOD (GREEN) and avoid POISON (RED). Stats are generated
+        dinamycally during execution. It's possible to tune the parameters only before starting the simulation.
+        Tuning needs to be taken with delicacy since a severe tuning against the Organisms may extinct the whole
+        population prematurely.
+      </p>
+      <p>
+        Note: Framerate is still work in progress.
       </p>
     </div>
 
-    <div class="tableDiv">
-      <table id="table">
-        <th>PARAMETERS</th>
-        <th>CURRENT VALUE</th>
-        <tr>
-          <td><span>Max Fitness:</span></td>
-          <td>
-            <div id="fitness"></div>
-          </td>
-        </tr>
-        <tr>
-          <td><span>Generation:</span></td>
-          <td>
-            <div id="population"></div>
-          </td>
-        </tr>
+    <div class="tableContainer">
+      <!-- Monitor -->
+      <div class="tableDivRow1">
+        <table id="table">
+          <th>PARAMETERS</th>
+          <th>CURRENT VALUE</th>
+          <tr>
+            <td><span>Cur. Max Fitness:</span></td>
+            <td>
+              <div id="fitness"></div>
+            </td>
+          </tr>
+          <tr>
+            <td><span>Generation:</span></td>
+            <td>
+              <div id="population"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-        <th>PARAMETERS</th>
-        <th>INPUT</th>
+      <!-- Stop Conditions -->
+      <div class="tableDivRow1">
+        <table id="table">
+          <th>STOP CONDITIONS</th>
+          <th>CURRENT VALUE</th>
+          <th>INPUT</th>
 
-        <tr>
-          <td><span id="framerateOutput">Framerate (1 / 60):</span></td>
-          <td><input type="range" id="framerate" min="1" max="60" value="60"></td>
-        </tr>
+          <tr>
+            <td><span>Max Generations:</span></td>
+            <td><span id="maxGenerationsToReachOutput"></span></td>
+            <td><input type="range" id="maxGenerationsToReach" min="1" max="50" value="30"></td>
+          </tr>
 
-        <tr>
-          <td><span>Start Simulation:</span></td>
-          <td><button id="startButton" onclick="startSimulation()">START</button></td>
-        </tr>
+          <tr>
+            <td><span>Max Fitness:</span></td>
+            <td><span id="maxFitnessToReachOutput"></span></td>
+            <td><input type="range" id="maxFitnessToReach" min="100" max="300" value="250"></td>
+          </tr>
+        </table>
+      </div>
 
-        <tr>
-          <td><span>Freeze Simulation:</span></td>
-          <td><button id="pauseButton" onclick="pauseSimulation()">PAUSE</button></td>
-        </tr>
+      <!-- Start Stop -->
+      <div class="tableDivRow2">
+        <table id="table">
+          <th>PARAMETERS</th>
+          <th>INPUT</th>
 
-        <tr>
-          <td><span>Stop Simulation:</span></td>
-          <td><button id="stopButton" onclick="stopSimulation()">STOP</button></td>
-        </tr>
+          <tr>
+            <td><span id="framerateOutput">Framerate (60 / 60):</span></td>
+            <td><input type="range" id="framerate" min="1" max="60" value="60" disabled="true"></td>
+          </tr>
 
-      </table>
+          <tr>
+            <td><span>Start Simulation:</span></td>
+            <td><button id="startButton" onclick="startSimulation()">START</button></td>
+          </tr>
 
-      <table id="table">
-        <th>PARAMETERS</th>
-        <th>CURRENT VALUE</th>
-        <th>INPUT</th>
+          <tr>
+            <td><span>Freeze Simulation:</span></td>
+            <td><button id="pauseButton" onclick="pauseSimulation()">PAUSE</button></td>
+          </tr>
 
-        <tr>
-          <td><span>Max Generations:</span></td>
-          <td><span id="maxGenerationsOutput"></span></td>
-          <td><input type="range" id="maxGenerations" min="1" max="50" value="30"></td>
-        </tr>
+          <tr>
+            <td><span>Stop Simulation:</span></td>
+            <td><button id="stopButton" onclick="stopSimulation()">STOP</button></td>
+          </tr>
+        </table>
+      </div>
 
-        <tr>
-          <td><span>Population size:</span></td>
-          <td><span id="populationSizeOutput"></span></td>
-          <td><input type="range" id="populationSize" min="20" max="200" value="50"></td>
-        </tr>
+      <!-- Start -->
+      <div class="tableDivRow2">
+        <table id="table">
 
-        <tr>
-          <td><span>Food spawn rate:</span></td>
-          <td><span id="randomFoodGenerationOutput"></span></td>
-          <td><input type="range" min="0" max="10" id="randomFoodGeneration" value="5"></td>
-        </tr>
+          <th>PARAMETERS</th>
+          <th>CURRENT VALUE</th>
+          <th>INPUT</th>
 
-        <tr>
-          <td><span>Poison spawn rate:</span></td>
-          <td><span id="randomPoisonGenerationOutput"></span></td>
-          <td><input type="range" min="0" max="10" id="randomPoisonGeneration" value="2"></td>
-        </tr>
+          <tr>
+            <td><span>Population size:</span></td>
+            <td><span id="populationSizeOutput"></span></td>
+            <td><input type="range" id="populationSize" min="20" max="200" value="50"></td>
+          </tr>
 
-        <tr>
-          <td><span>Elitism:</span></td>
-          <td><span id="elitismOutput"></span></td>
-          <td><input type="range" id="elitism" min="0" max="20" value="5"></td>
-        </tr>
+          <tr>
+            <td><span>Food spawn rate:</span></td>
+            <td><span id="randomFoodGenerationOutput"></span></td>
+            <td><input type="range" min="0" max="10" id="randomFoodGeneration" value="5"></td>
+          </tr>
 
-        <tr>
-          <td><span>Mutation rate:</span></td>
-          <td><span id="mutationRateOutput"></span></td>
-          <td><input type="range" id="mutationRate" min="0" max="100" value="50"></td>
-        </tr>
+          <tr>
+            <td><span>Poison spawn rate:</span></td>
+            <td><span id="randomPoisonGenerationOutput"></span></td>
+            <td><input type="range" min="0" max="10" id="randomPoisonGeneration" value="2"></td>
+          </tr>
 
-        <tr>
-          <td><span>Death Enabled:</span></td>
-          <td></td>
-          <td><input type="checkbox" id="deathCheckbox" checked></td>
-        </tr>
-      </table>
+          <tr>
+            <td><span>Elitism:</span></td>
+            <td><span id="elitismOutput"></span></td>
+            <td><input type="range" id="elitism" min="0" max="20" value="5"></td>
+          </tr>
 
+          <tr>
+            <td><span>Mutation rate:</span></td>
+            <td><span id="mutationRateOutput"></span></td>
+            <td><input type="range" id="mutationRate" min="0" max="100" value="50"></td>
+          </tr>
 
+          <tr>
+            <td><span>Death Enabled:</span></td>
+            <td></td>
+            <td><input type="checkbox" id="deathCheckbox" checked></td>
+          </tr>
+        </table>
+      </div>
+
+      
+
+      <!--Histograms-->
+      <div class="tableDiv">
+        <table>
+          <tr>
+            <td>
+              <div id="HistogramFitness" style="width: 500px;"></div>
+            </td>
+            <td>
+              <div id="HistogramDeaths" style="width: 500px;"></div>
+            </td>
+          </tr>
+          <br></br>
+          <tr>
+            <td>
+              <div id="HistogramFoods" style="width: 500px;"></div>
+            </td>
+            <td>
+              <div id="HistogramPoisons" style="width: 500px;"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
 
-    <table>
-      <tr>
-        <td>
-          <div id="HistogramFitness" style="width: 500px;"></div>
-        </td>
-        <td>
-          <div id="HistogramDeaths" style="width: 500px;"></div>
-        </td>
-      </tr>
-      <br></br>
-      <tr>
-        <td>
-          <div id="HistogramFoods" style="width: 500px;"></div>
-        </td>
-        <td>
-          <div id="HistogramPoisons" style="width: 500px;"></div>
-        </td>
-      </tr>
-    </table>
 
     <div class="mail">
       NEED INFO? REACH ME OUT @ <a href="mailto:luca.cesarano1@gmail.com">MY E-MAIL</a>

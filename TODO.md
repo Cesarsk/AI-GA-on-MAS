@@ -32,4 +32,13 @@
 
 ## Criteri di arresto: 
 [x] Fissare un numero massimo (controllabile) Kmax di iterazioni (o generazioni);
+[x] Fitness massima;
+[-] Tempo massimo?
+
+## Altro:
+Ed ha detto che quando fai le prove devi cambiare solo un parametro per volta
+Si qualche grafico me l'ha chiesto
+Comunque ti segnalo che da PC si sminchia un po' l'interfaccia
+
+## Domande per il Prof.
 

@@ -2,16 +2,21 @@ var population = new Array();
 var food = new Array();
 var poison = new Array();
 
-var elitism = 5;
-var generation = 0;
-var populationSize = 30;
-var mutationRate = 0.9;
-var numberOfFood = 200;
-var numberOfPoison = 30;
-var maxFitness = 0;
 
+var maxFitnessToReach = 0;
+var maxGenerationsToReach = 0;
+
+var maxFitness = 0;
+var generation = 0;
+
+var populationSize = 30;
 var randomFoodGeneration = 15;
 var randomPoisonGeneration = 3;
+var elitism = 5;
+var mutationRate = 0;
+
+var numberOfFood = 200;
+var numberOfPoison = 30;
 
 var deathEnabled = false;
 var fps = 0;
@@ -28,7 +33,6 @@ var backgroundColor = '#075484';
 var textPauseColor = '';
 var frameCountTmp = 0;
 var simulationState = 0; //0: Stopped, 1: Running, 2: Paused
-var maxGenerations = '';
 
 p5.disableFriendlyErrors = true; // disables FES
 
@@ -197,9 +201,7 @@ function runGeneticAlgorithm() {
     var tempElitism = 0;
     if (elitism > population.length) {
         tempElitism = population.length;
-    }
-
-    else {
+    } else {
         tempElitism = elitism;
     }
 
@@ -230,7 +232,6 @@ function runGeneticAlgorithm() {
 
     // crossover
     while (newPopulation.length < populationSize) {
-
         var parent1 = population[Math.floor(random(population.length))];
         var parent2 = population[Math.floor(random(population.length))];
         var child = new Organism();
@@ -265,8 +266,7 @@ function runGeneticAlgorithm() {
             }
 
             // mutation
-            mutationRateProb = random(1);
-            if (mutationRateProb <= mutationRate) {
+            if (random(1) <= mutationRate) {
                 child.randomMutation();
             }
 

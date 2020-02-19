@@ -1,7 +1,8 @@
 function refreshParameters() {
     if (simulationState == 0) {
         refreshValues();
-        document.getElementById("maxGenerations").disabled = false;
+        document.getElementById("maxGenerationsToReach").disabled = false;
+        document.getElementById("maxFitnessToReach").disabled = false;
         document.getElementById("populationSize").disabled = false;
         document.getElementById("randomFoodGeneration").disabled = false;
         document.getElementById("randomPoisonGeneration").disabled = false;
@@ -13,7 +14,8 @@ function refreshParameters() {
         document.getElementById("stopButton").disabled = true;
     } else if (simulationState == 1) {
         refreshValues();
-        document.getElementById("maxGenerations").disabled = true;
+        document.getElementById("maxGenerationsToReach").disabled = true;
+        document.getElementById("maxFitnessToReach").disabled = true;
         document.getElementById("populationSize").disabled = true;
         document.getElementById("randomFoodGeneration").disabled = true;
         document.getElementById("randomPoisonGeneration").disabled = true;
@@ -24,7 +26,8 @@ function refreshParameters() {
         document.getElementById("pauseButton").disabled = false;
         document.getElementById("stopButton").disabled = false;
     } else if (simulationState == 2) {
-        document.getElementById("maxGenerations").disabled = true;
+        document.getElementById("maxGenerationsToReach").disabled = true;
+        document.getElementById("maxFitnessToReach").disabled = true;
         document.getElementById("populationSize").disabled = true;
         document.getElementById("randomFoodGeneration").disabled = true;
         document.getElementById("randomPoisonGeneration").disabled = true;
@@ -45,8 +48,11 @@ function refreshValues() {
     document.getElementById("framerateOutput").innerHTML = "Framerate (" + fps + " / 60)";
     frameRate(fps);
 
-    maxGenerations = document.getElementById("maxGenerations").value;
-    document.getElementById("maxGenerationsOutput").innerHTML = maxGenerations;
+    maxGenerationsToReach = document.getElementById("maxGenerationsToReach").value;
+    document.getElementById("maxGenerationsToReachOutput").innerHTML = maxGenerationsToReach;
+    
+    maxFitnessToReach = document.getElementById("maxFitnessToReach").value;
+    document.getElementById("maxFitnessToReachOutput").innerHTML = maxFitnessToReach;
 
     randomFoodGeneration = document.getElementById("randomFoodGeneration").value;
     document.getElementById("randomFoodGenerationOutput").innerHTML = randomFoodGeneration;
@@ -93,7 +99,7 @@ function pauseSimulation() {
 }
 
 function checkEndingCondition() {
-    if (generation == maxGenerations) {
+    if (generation == maxGenerationsToReach || maxFitness >= maxFitnessToReach) {
         simulationState = 0;
     }
 }
@@ -110,6 +116,9 @@ function resetSimulation() {
     x = new Array();
     yFitness = new Array();
     yDeaths = new Array();
+    yFoods = new Array();
+    yPoisons = new Array();
+    
     clearBackground();
     initElements();
 }
