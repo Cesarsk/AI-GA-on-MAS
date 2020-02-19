@@ -200,13 +200,14 @@ function runGeneticAlgorithm() {
 
     var tempElitism = 0;
     if (elitism > population.length) {
+        //take the max
         tempElitism = population.length;
     } else {
         tempElitism = elitism;
     }
 
+    //maximum problem: find the best (max fitness) organisms and push them into the new generation
     for (var i = 0; i < tempElitism; i++) {
-
         var maxPopulationFitness = 0;
 
         var bestChromosome = population[0];
