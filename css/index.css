@@ -57,28 +57,31 @@ p {
 
 .tableContainer {
   width: 1000px;
+  justify-content: center;
+  flex: 1;
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
 }
 
-.tableDivRow1 {
+.tableDivR {
+  display:flex;
   padding-left: 10px;
   padding-right: 10px;
-  flex: 0 45%;
 }
 
-.tableDivRow2 {
-  padding-left: 10px;
-  padding-right: 10px;
-  flex: 0 45%;
+.tableDivD {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex: 1;
 }
 
 #table {
   border-collapse: collapse;
   font-size: smaller;
   width: 100%;
-  margin: 30px;
+  margin: 20px;
 }
 
 #table td, #table th {
