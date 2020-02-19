@@ -43,6 +43,10 @@ a {
   color: #FBCA26;    
 }
 
+p {
+  line-height: 1.8vh;
+}
+
 .abstract {
   padding-top: 10px;
   display: flex;

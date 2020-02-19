@@ -38,12 +38,12 @@ p5.disableFriendlyErrors = true; // disables FES
 
 //Setup Canvas, Framerate and Init Elements
 function setup() {
+    backgroundColor = color(random(255), random(255), random(255));
     var cnv = createCanvas(frameWidth, frameHeight);
     cnv.parent('Canvas');
     initElements();
     background(backgroundColor);
-    textPauseColor = color(251, 202, 38);
-    textPauseColor.setAlpha(1);
+    drawSplashScreen();
     refreshParameters();
     fps = parseInt(document.getElementById("framerate").value);
     frameRate(fps);
@@ -53,9 +53,18 @@ function generateHistograms() {
     updateHistograms();
 }
 
+function drawSplashScreen() {
+    textPauseColor = color(251, 222, 0);
+    stroke(0, 0, 0);
+    strokeWeight(0.5);
+    textPauseColor.setAlpha(1);
+}
+
 function drawPause() {
     fill(textPauseColor);
     textSize(32);
+    stroke(0, 0, 0);
+    strokeWeight(0.5);
     text("SIMULATION PAUSED", frameWidth / 3.3, frameHeight / 2 - 20);
     text("PRESS PAUSE TO PLAY", frameWidth / 3.3 - 20, frameHeight / 2 + 40);
 }
@@ -68,6 +77,8 @@ function clearBackground() {
 function drawStop() {
     textPauseColor.setAlpha(5);
     fill(textPauseColor);
+    stroke(0, 0, 0);
+    strokeWeight(0.5);
     textSize(32);
     text("SIMULATION FINISHED", frameWidth / 3.3, frameHeight / 2 - 20);
     text("CHECK STATS OR START OVER", frameWidth / 3.3 - 55, frameHeight / 2 + 40);
@@ -91,8 +102,8 @@ function draw() {
 
 function runSimulation() {
     simulationState = 1;
-    // every 5 seconds generating new population
-    if (frameCount % (fps * 5) == 0) {
+
+    if (frameCount % 150 == 0) {
         runGeneticAlgorithm();
         generateHistograms();
         numberOfDeaths = 0;
@@ -118,11 +129,11 @@ function initElements() {
         population.push(new Organism());
     }
 
-    for (var i = 0; i < numberOfFood*0.1*randomFoodGeneration; i++) {
+    for (var i = 0; i < numberOfFood * 0.1 * randomFoodGeneration; i++) {
         food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
     }
 
-    for (var i = 0; i < numberOfPoison*0.1*randomPoisonGeneration; i++) {
+    for (var i = 0; i < numberOfPoison * 0.1 * randomPoisonGeneration; i++) {
         poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
     }
 }
@@ -155,7 +166,7 @@ function generateElements() {
     if (random(1) < 0.3) {
         for (var i = 0; i < randomPoisonGeneration; i++) {
             if (random(1) < 0.1) {
-            poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
+                poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
             }
         }
     }
@@ -281,4 +292,6 @@ function runGeneticAlgorithm() {
     population.splice(0, population.length);
     population = newPopulation.slice();
     generation++;
+    backgroundColor = color(random(255), random(255), random(255));
+    background(backgroundColor);
 }

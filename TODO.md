@@ -37,5 +37,10 @@ Ed ha detto che quando fai le prove devi cambiare solo un parametro per volta
 Si qualche grafico me l'ha chiesto
 Comunque ti segnalo che da PC si sminchia un po' l'interfaccia
 
+## Canvas:
+
+Bordino bianco
+cambio background animato
+
 ## Domande per il Prof.
 
