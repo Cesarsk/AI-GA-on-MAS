@@ -235,7 +235,6 @@ function runGeneticAlgorithm() {
         var parent1 = population[Math.floor(random(population.length))];
         var parent2 = population[Math.floor(random(population.length))];
         var child = new Organism();
-        console.log(child);
         if (child != null) {
             if (random(1) < 0.5) {
                 child.radius = parent1.radius;

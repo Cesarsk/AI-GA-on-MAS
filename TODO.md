@@ -4,8 +4,6 @@
 [] Change Style canvas
 [] Study GA
 [] Pre-made experiments
-[] RANDOM FOOD SPAWN RATE?
-[] RANDOM POISON SPAWN RATE?
 [x] Aggiungere Instructions
 
 ## Bugfix:
@@ -28,12 +26,11 @@
 ## Vari:
 [?] Funzione di Export per istogrammi: e' già possibile salvarli come png. Export in .zip?
 [?] Disattivare Istogram Morti se Death è disabilitata.
-[?] Fissare un tempo di esecuzione limite Tmax;
 
 ## Criteri di arresto: 
 [x] Fissare un numero massimo (controllabile) Kmax di iterazioni (o generazioni);
 [x] Fitness massima;
-[-] Tempo massimo?
+[?] Fissare un tempo di esecuzione limite Tmax;
 
 ## Altro:
 Ed ha detto che quando fai le prove devi cambiare solo un parametro per volta
