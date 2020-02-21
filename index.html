@@ -5,6 +5,7 @@
   <script src="model/Histogram.js"></script>
   <script src="lib/plotly-latest.min.js"></script>
   <script src="lib/p5.js"></script>
+  <script src="model/Food.js"></script>
   <script src="model/Organism.js"></script>
   <script src="controller/Controller.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
@@ -68,7 +69,7 @@
             <tr>
               <td><span>Max Fitness:</span></td>
               <td><span id="maxFitnessToReachOutput"></span></td>
-              <td><input type="range" id="maxFitnessToReach" min="100" max="300" value="250"></td>
+              <td><input type="range" id="maxFitnessToReach" min="100" max="500" value="500"></td>
             </tr>
           </table>
         </div>
@@ -122,7 +123,7 @@
             <tr>
               <td><span>Poison spawn rate:</span></td>
               <td><span id="randomPoisonGenerationOutput"></span></td>
-              <td><input type="range" min="0" max="10" id="randomPoisonGeneration" value="2"></td>
+              <td><input type="range" min="0" max="10" id="randomPoisonGeneration" value="1"></td>
             </tr>
 
             <tr>

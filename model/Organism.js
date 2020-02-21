@@ -98,7 +98,7 @@ class Organism {
             if (minDistance < this.radius) {
                 poison.splice(minIndex, 1);
                 numberOfPoisonsEaten++;
-                this.health -= 30;
+                this.health -= 50;
             }
         };
         
@@ -178,14 +178,14 @@ class Organism {
             translate(this.position.x, this.position.y);
             rotate(theta);
 
-            // draw sensor
-            fill('105', '150', '189');
+            // draw fin
+            fill("#358ee8");
             stroke(255, 255, 255);
             arc(0, 0, this.sight, this.sight, PI / 4, 3 * PI / 4, PIE);
             endShape(CLOSE);
 
-            // draw an organism
-            fill('105', '150', '189');
+            // draw body
+            fill("#51a0ef");
             stroke('150');
             beginShape('189');
             ellipse(0, 0, this.radius);
