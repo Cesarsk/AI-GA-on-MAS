@@ -5,7 +5,8 @@
   <script src="model/Histogram.js"></script>
   <script src="lib/plotly-latest.min.js"></script>
   <script src="lib/p5.js"></script>
-  <script src="model/Food.js"></script>
+  <script src="model/Genetic.js"></script>
+  <script src="model/Particle.js"></script>
   <script src="model/Organism.js"></script>
   <script src="controller/Controller.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
@@ -26,11 +27,11 @@
 
     <div class="abstract">
       <p> Abstract: This is an application of GA (Genetic Algorithm) in a Cellular Automata. <span style="color:#51a0ef">ORGANISMS (BLUE)</span> are going to
-        evolve over generations and learn how to eat <span style="color:rgb(13, 164, 13);">FOOD (GREEN)</span> and avoid <span style="color:#ff2100;">POISON (RED)</span>. Stats are generated
+        evolve over generations (represented by a background color change) and learn how to eat <span style="color:rgb(13, 164, 13);">FOOD (GREEN)</span> and avoid <span style="color:#ff2100;">POISON (RED)</span>. Stats are generated
         dinamically during execution in the bottom. It's possible to tune the parameters only before starting the
         simulation.
         Tuning needs to be taken with delicacy since a severe tuning against the Organisms may extinct the whole
-        population prematurely. Note: Framerate Option is still work in progress.
+        population prematurely. Note: Framerate Option should work but use it carefully.
       </p>
     </div>
 
@@ -83,7 +84,7 @@
 
             <tr>
               <td><span id="framerateOutput">Framerate (60 / 60):</span></td>
-              <td><input type="range" id="framerate" min="1" max="60" value="60" disabled="true"></td>
+              <td><input type="range" id="framerate" min="1" max="60" value="60"></td>
             </tr>
 
             <tr>

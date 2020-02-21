@@ -62,3 +62,17 @@ Cosa ne pensa?
 Domanda relativa alla generazione del cibo. Per il tracciamento di un'istogramma devo fare in modo che ad ogni generazione la quantità 
 
 Metaeuristica.
+
+
+    //Elitism involves copying a small proportion of the fittest candidates, unchanged, 
+    //into the next generation. This can sometimes have a dramatic impact on performance 
+    //by ensuring that the EA does not waste time re-discovering previously discarded partial solutions. 
+    //Candidate solutions that are preserved unchanged through elitism remain eligible for selection 
+    //as parents when breeding the remainder of the next generation.
+
+    //A practical variant of the general process of constructing a 
+    //new population is to allow the best organism(s) 
+    //from the current generation to carry over to the next, unaltered. 
+    //This strategy is known as elitist selection and guarantees that 
+    //the solution quality obtained by the GA will not decrease from 
+    //one generation to the next.

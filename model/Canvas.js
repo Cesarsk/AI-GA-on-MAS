@@ -85,6 +85,7 @@ function draw() {
 
     if (simulationState == 0) {
         drawStop();
+        perFps = frameCount
     }
     if (simulationState == 1) {
         runSimulation();
@@ -97,7 +98,7 @@ function draw() {
 function runSimulation() {
     simulationState = 1;
 
-    if (frameCount % 150 == 0) {
+    if (frameCount % (450 - 5*fps) == 0) {
         runGeneticAlgorithm();
         generateHistograms();
         numberOfDeaths = 0;
@@ -137,116 +138,6 @@ function removeDead() {
             }
         }
     }
-}
-
-function runGeneticAlgorithm() {
-    var bestInPopulation = new Array();
-
-    if (population.length < 10) {
-        simulationState = 0;
-        return;
-    }
-
-    // elitism
-
-    //Elitism involves copying a small proportion of the fittest candidates, unchanged, 
-    //into the next generation. This can sometimes have a dramatic impact on performance 
-    //by ensuring that the EA does not waste time re-discovering previously discarded partial solutions. 
-    //Candidate solutions that are preserved unchanged through elitism remain eligible for selection 
-    //as parents when breeding the remainder of the next generation.
-
-    //A practical variant of the general process of constructing a 
-    //new population is to allow the best organism(s) 
-    //from the current generation to carry over to the next, unaltered. 
-    //This strategy is known as elitist selection and guarantees that 
-    //the solution quality obtained by the GA will not decrease from 
-    //one generation to the next.
-
-    var tempElitism = 0;
-    if (elitism > population.length) {
-        //take the max
-        tempElitism = population.length;
-    } else {
-        tempElitism = elitism;
-    }
-
-    //maximum problem: find the best (max fitness) organisms and push them into the new generation
-    for (var i = 0; i < tempElitism; i++) {
-        var maxPopulationFitness = 0;
-
-        var bestChromosome = population[0];
-        var bestChromosomeIndex = 0;
-
-        for (var j = 0; j < population.length; j++) {
-            population[j].calculateFitness();
-            if (population[j].fitness > maxPopulationFitness) {
-                maxPopulationFitness = population[j].fitness;
-                bestChromosome = population[j];
-                bestChromosomeIndex = j;
-            }
-        }
-
-        population.splice(bestChromosomeIndex, 1);
-        bestInPopulation.push(bestChromosome);
-    }
-
-    var newPopulation = new Array();
-    for (var j = 0; j < tempElitism; j++) {
-        newPopulation.push(bestInPopulation[j]);
-    }
-
-    // crossover
-    while (newPopulation.length < populationSize) {
-        var parent1 = population[Math.floor(random(population.length))];
-        var parent2 = population[Math.floor(random(population.length))];
-        var child = new Organism();
-        if (child != null) {
-            if (random(1) < 0.5) {
-                child.radius = parent1.radius;
-            }
-            else {
-                child.radius = parent2.radius;
-            }
-
-            if (random(1) < 0.5) {
-                child.sight = parent1.sight;
-            }
-            else {
-                child.sight = parent2.sight;
-            }
-
-            if (random(1) < 0.5) {
-                child.maxForce = parent1.maxForce;
-            }
-            else {
-                child.maxForce = parent2.maxForce;
-            }
-
-            if (random(1) < 0.5) {
-                child.maxSpeed = parent1.maxSpeed;
-            }
-            else {
-                child.maxSpeed = parent2.maxSpeed;
-            }
-
-            // mutation
-            if (random(1) <= mutationRate) {
-                child.randomMutation();
-            }
-
-            if (child.radius > child.sight) {
-                child.sight = child.radius + 5;
-            }
-
-            newPopulation.push(child);
-        }
-    }
-
-    population.splice(0, population.length);
-    population = newPopulation.slice();
-    generation++;
-    backgroundColor = generateRandomColorHue();
-    background(backgroundColor);
 }
 
 function generateRandomColorHue() {

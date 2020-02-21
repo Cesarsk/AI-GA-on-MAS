@@ -10,7 +10,10 @@ function drawPoison() {
     for (var i = 0; i < poison.length; i++) {
         fill("#ff2b2b");
         noStroke();
-        rect(poison[i].x, poison[i].y, 5, 5);
+
+        rect(poison[i].x, poison[i].y, 5, 1);
+        rect(poison[i].x+2, poison[i].y-2, 1, 5);
+        //rect(poison[i].x, poison[i].y, 5, 5);
     }
 }
 
