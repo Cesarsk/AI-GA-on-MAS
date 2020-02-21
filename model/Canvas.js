@@ -111,10 +111,11 @@ function runSimulation() {
     // background needs to be refreshed as well
     background(backgroundColor);
 
-    // funcs to call
     removeDead();
-    generateElements();
-    drawElements();
+    generateFood();
+    generatePoison();
+    drawFood();
+    drawPoison();
 }
 
 //Init Elements sets our elements of the simulation
@@ -122,40 +123,6 @@ function initElements() {
     for (var i = 0; i < populationSize; i++) {
         population.push(new Organism());
     }
-}
-
-function drawElements() {
-    // draw food
-    for (var i = 0; i < food.length; i++) {
-        fill("#35ce16");
-        noStroke();
-        ellipse(food[i].x, food[i].y, 5, 5);
-    }
-
-    // poison
-    for (var i = 0; i < poison.length; i++) {
-        fill("#ff2b2b");
-        noStroke();
-        rect(poison[i].x, poison[i].y, 5, 5);
-    }
-
-}
-
-function generateElements() {
-    // random food generation
-    if (random(1) < 0.3) {
-        for (var i = 0; i < randomFoodGeneration; i++) {
-            food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
-        }
-    }
-
-    // random poison generation
-    if (random(1) < 0.3) {
-        for (var i = 0; i < randomPoisonGeneration; i++) {
-            poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
-        }
-    }
-
 }
 
 function removeDead() {

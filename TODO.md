@@ -18,12 +18,12 @@
 [x] Pulsante START (disabilitare possibilità di muovere gli slider)
 [x] Pulsante PAUSA
 [x] Pulsante RESET (abilitare possibilità di muovere gli slider)
-[x] istogramma1: generazione / numero morti (indicati i parametri scelti durante l'avvio dell'algoritmo)
-[x] istogramma2: generazione / numero frutti mangiati
-[x] istogramma3: generazione / numero veleni mangiati
 [x] istogramma4: generazione / maxFitness
-[x] istogramma5: fitness media / generazione
-
+[] istogramma1: generazione / numero morti (indicati i parametri scelti durante l'avvio dell'algoritmo)
+[] istogramma2: generazione / numero frutti mangiati
+[] istogramma3: generazione / numero veleni mangiati
+[] istogramma5: fitness media / generazione
+[] istogramma6: population size / generazione
 ## Vari:
 [?] Funzione di Export per istogrammi: e' già possibile salvarli come png. Export in .zip?
 [?] Disattivare Istogram Morti se Death è disabilitata.
