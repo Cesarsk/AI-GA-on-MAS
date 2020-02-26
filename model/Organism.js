@@ -3,15 +3,15 @@ class Organism {
         this.fitness = 0;
         
         this.position = createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10);
-        this.velocity = createVector(random(this.maxSpeed), random(this.maxSpeed));
+        this.velocity = createVector(random(this.speed), random(this.speed));
         this.acceleration = createVector(0, 0);
         this.desiredPosition = createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10);
         
         //-----------------------------------FITNESS PARAMETERS-----------------------------------
         
         this.health = 100;
-        this.maxForce = random(1);
-        this.maxSpeed = random(10);        
+        this.force = random(1);
+        this.speed = random(10);        
 
         this.radius = 10;
         this.sight = random(5, 35);
@@ -21,8 +21,8 @@ class Organism {
         this.calculateFitness = function () {
             var score = 0;
             score += this.health;
-            score += this.maxForce;
-            score += this.maxSpeed;
+            score += this.force;
+            score += this.speed;
             score += this.radius;
             score += this.sight;
             if (score > maxFitness) {
@@ -52,18 +52,18 @@ class Organism {
             }
             else if (randomNumber < 4) {
                 if (random(1) < 0.5) {
-                    this.maxForce = this.maxForce * (random(1) + 1);
+                    this.force = this.force * (random(1) + 1);
                 }
                 else {
-                    this.maxForce = this.maxForce * random(1);
+                    this.force = this.force * random(1);
                 }
             }
             else if (randomNumber < 5) {
                 if (random(1) < 0.5) {
-                    this.maxSpeed = this.maxSpeed * (random(1) + 1);
+                    this.speed = this.speed * (random(1) + 1);
                 }
                 else {
-                    this.maxSpeed = this.maxSpeed * random(1);
+                    this.speed = this.speed * random(1);
                 }
             }
         };
@@ -125,11 +125,11 @@ class Organism {
                 target = p5.Vector.sub(goal, this.position);
                 
                 // normalize then multiply by maximum speed
-                target.setMag(this.maxSpeed * desire);
+                target.setMag(this.speed * desire);
                 
                 // make it closer to the target
                 this.desiredPosition = p5.Vector.sub(target, this.velocity);
-                this.desiredPosition.limit(this.maxForce);
+                this.desiredPosition.limit(this.force);
 
                 // move towards target, as fast as you can
                 this.acceleration.add(this.desiredPosition);
@@ -149,7 +149,7 @@ class Organism {
             // update position
             this.velocity.add(this.acceleration); // add force if there is any
             this.acceleration.mult(0); // reset acceleration
-            this.velocity.limit(this.maxSpeed);
+            this.velocity.limit(this.speed);
             this.position.add(this.velocity);
             
             // if boundary reached, jump on the other side

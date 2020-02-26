@@ -2,6 +2,8 @@ function drawFood() {
     for (var i = 0; i < food.length; i++) {
         fill("#35ce16");
         noStroke();
+
+        // draw a circle
         ellipse(food[i].x, food[i].y, 5, 5);
     }
 }
@@ -11,9 +13,9 @@ function drawPoison() {
         fill("#ff2b2b");
         noStroke();
 
+        //draw a cross
         rect(poison[i].x, poison[i].y, 5, 1);
         rect(poison[i].x+2, poison[i].y-2, 1, 5);
-        //rect(poison[i].x, poison[i].y, 5, 5);
     }
 }
 

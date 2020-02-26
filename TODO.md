@@ -1,9 +1,9 @@
 # General TO DO List:
 [] Refactor Code
-[] Documentation
-[] Change Style canvas
+[] Documentation: paper + presentation
 [] Study GA
 [] Pre-made experiments
+[x] Change Style canvas
 [x] Aggiungere Instructions
 
 ## Bugfix:
@@ -24,23 +24,18 @@
 [] istogramma3: generazione / numero veleni mangiati
 [] istogramma5: fitness media / generazione
 [] istogramma6: population size / generazione
+
 ## Vari:
-[?] Funzione di Export per istogrammi: e' già possibile salvarli come png. Export in .zip?
-[?] Disattivare Istogram Morti se Death è disabilitata.
+[]
 
 ## Criteri di arresto: 
 [x] Fissare un numero massimo (controllabile) Kmax di iterazioni (o generazioni);
 [x] Fitness massima;
-[?] Fissare un tempo di esecuzione limite Tmax;
 
 ## Altro:
-Ed ha detto che quando fai le prove devi cambiare solo un parametro per volta
-Si qualche grafico me l'ha chiesto
-Comunque ti segnalo che da PC si sminchia un po' l'interfaccia
+quando fai le prove devi cambiare solo un parametro per volta
 
 ## Canvas:
-
-[] Bordino bianco
 [x] cambio background animato
 
 ## Domande per il Prof.
@@ -56,10 +51,8 @@ Altri grafici che ho valutato riguardano la max fitness / generazione, deaths / 
 
 Cosa ne pensa? 
 
+### Sandbox
 
-
-
-Domanda relativa alla generazione del cibo. Per il tracciamento di un'istogramma devo fare in modo che ad ogni generazione la quantità 
 
 Metaeuristica.
 

@@ -43,6 +43,7 @@ var yFitness = new Array();
 var yDeaths = new Array();
 var yFoods = new Array();
 var yPoisons = new Array();
+var yAverageFitness = new Array();
 
 var genTitle = "";
 

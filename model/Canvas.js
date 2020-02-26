@@ -7,6 +7,7 @@ var maxFitnessToReach = 0;
 var maxGenerationsToReach = 0;
 
 var maxFitness = 0;
+var averageFitness = 0;
 var generation = 0;
 
 var populationSize = 30;
@@ -38,11 +39,10 @@ p5.disableFriendlyErrors = true; // disables FES
 
 //Setup Canvas, Framerate and Init Elements
 function setup() {
-    backgroundColor = generateRandomColorHue();
     var cnv = createCanvas(frameWidth, frameHeight);
     cnv.parent('Canvas');
     initElements();
-    background(backgroundColor);
+    setRandomBackground();
     drawSplashScreen();
     refreshParameters();
     fps = parseInt(document.getElementById("framerate").value);
@@ -63,11 +63,6 @@ function drawPause() {
     textSize(32);
     text("SIMULATION PAUSED", frameWidth / 3.3, frameHeight / 2 - 20);
     text("PRESS PAUSE TO PLAY", frameWidth / 3.3 - 20, frameHeight / 2 + 40);
-}
-
-function clearBackground() {
-    clear();
-    background(backgroundColor);
 }
 
 function drawStop() {
@@ -109,8 +104,7 @@ function runSimulation() {
     // remove all elements from last frame
     clear();
 
-    // background needs to be refreshed as well
-    background(backgroundColor);
+    refreshBackground();
 
     removeDead();
     generateFood();
@@ -143,4 +137,18 @@ function removeDead() {
 function generateRandomColorHue() {
     randomH = random(360).toFixed(0);
     return randomColorHue = ('hsl('+randomH+',100%,28%)');
+}
+
+function setRandomBackground() {
+    backgroundColor = generateRandomColorHue();
+    background(backgroundColor);
+}
+
+function clearBackground() {
+    clear();
+    background(backgroundColor);
+}
+
+function refreshBackground() {
+    background(backgroundColor);
 }
