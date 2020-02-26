@@ -58,19 +58,19 @@ function drawSplashScreen() {
     textPauseColor.setAlpha(1);
 }
 
-function drawPause() {
+function drawPause(firstStr, secondStr) {
     fill(textPauseColor);
     textSize(32);
-    text("SIMULATION PAUSED", frameWidth / 3.3, frameHeight / 2 - 20);
-    text("PRESS PAUSE TO PLAY", frameWidth / 3.3 - 20, frameHeight / 2 + 40);
+    text(firstStr, frameWidth / 3.3, frameHeight / 2 - 20);
+    text(secondStr, frameWidth / 3.3 - 15, frameHeight / 2 + 40);
 }
 
-function drawStop() {
+function drawStop(firstStr, secondStr) {
     textPauseColor.setAlpha(5);
     fill(textPauseColor);
     textSize(32);
-    text("SIMULATION FINISHED", frameWidth / 3.3, frameHeight / 2 - 20);
-    text("CHECK STATS OR START OVER", frameWidth / 3.3 - 55, frameHeight / 2 + 40);
+    text(firstStr, frameWidth / 3.3, frameHeight / 2 - 20);
+    text(secondStr, frameWidth / 3.3 - 55, frameHeight / 2 + 40);
 }
 
 //Called fps times per second.
@@ -79,21 +79,21 @@ function draw() {
     refreshParameters();
 
     if (simulationState == 0) {
-        drawStop();
+        drawStop("SIMULATION FINISHED", "CHECK STATS OR START OVER");
         perFps = frameCount
     }
     if (simulationState == 1) {
         runSimulation();
     }
     if (simulationState == 2) {
-        drawPause();
+        drawPause("SIMULATION PAUSED", "PRESS PAUSE TO PLAY");
     }
 }
 
 function runSimulation() {
     simulationState = 1;
 
-    if (frameCount % (450 - 5*fps) == 0) {
+    if (frameCount % (450 - 5 * fps) == 0) {
         runGeneticAlgorithm();
         generateHistograms();
         numberOfDeaths = 0;
@@ -136,7 +136,7 @@ function removeDead() {
 
 function generateRandomColorHue() {
     randomH = random(360).toFixed(0);
-    return randomColorHue = ('hsl('+randomH+',100%,28%)');
+    return randomColorHue = ('hsl(' + randomH + ',100%,28%)');
 }
 
 function setRandomBackground() {
