@@ -106,7 +106,6 @@ class Organism {
             var minDistance = Infinity;
             var minIndex = -1;
             var goal;
-            var desire;
             var target;
 
             // if food detected, follow it
@@ -120,12 +119,10 @@ class Organism {
             if (minDistance < this.sight) {
                 goal = food[minIndex];
                 
-                // want to eat food so bad
-                desire = 1;
                 target = p5.Vector.sub(goal, this.position);
                 
                 // normalize then multiply by maximum speed
-                target.setMag(this.speed * desire);
+                target.setMag(this.speed);
                 
                 // make it closer to the target
                 this.desiredPosition = p5.Vector.sub(target, this.velocity);
