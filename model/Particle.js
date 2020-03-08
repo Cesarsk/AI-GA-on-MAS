@@ -24,6 +24,7 @@ function generateFood() {
     if (random(1) < 0.3) {
         for (var i = 0; i < randomFoodGeneration; i++) {
             food.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
+            numberOfFood++;
         }
     }
 }
@@ -33,6 +34,7 @@ function generatePoison() {
     if (random(1) < 0.3) {
         for (var i = 0; i < randomPoisonGeneration; i++) {
             poison.push(createVector(random(frameWidth - 20) + 10, random(frameHeight - 20) + 10));
+            numberOfPoison++;
         }
     }
 }

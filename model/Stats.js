@@ -47,26 +47,26 @@ var dataDev = {
 // Layout
 var layoutMaxFitness = Object.assign({}, layout);
 var layoutDeaths = Object.assign({}, layout);
-var layoutFoods = Object.assign({}, layout);
-var layoutPoisons = Object.assign({}, layout);
+var layoutFood = Object.assign({}, layout);
+var layoutPoison = Object.assign({}, layout);
 
 // Bars
 var dataBarMaxFitness = Object.assign({}, dataBar);
 var dataBarDeaths = Object.assign({}, dataBar);
-var dataBarFoods = Object.assign({}, dataBar);
-var dataBarPoisons = Object.assign({}, dataBar);
+var dataBarFood = Object.assign({}, dataBar);
+var dataBarPoison = Object.assign({}, dataBar);
 
 // Avgs
 var dataAvgMaxFitness = Object.assign({}, dataAvg);
 var dataAvgDeaths = Object.assign({}, dataAvg);
-var dataAvgFoods = Object.assign({}, dataAvg);
-var dataAvgPoisons = Object.assign({}, dataAvg);
+var dataAvgFood = Object.assign({}, dataAvg);
+var dataAvgPoison = Object.assign({}, dataAvg);
 
 // Std. Dev
 var dataDevMaxFitness = Object.assign({}, dataDev);
 var dataDevDeaths = Object.assign({}, dataDev);
-var dataDevFoods = Object.assign({}, dataDev);
-var dataDevPoisons = Object.assign({}, dataDev);
+var dataDevFood = Object.assign({}, dataDev);
+var dataDevPoison = Object.assign({}, dataDev);
 
 // Generic Chart title
 var genTitle = "";
@@ -77,20 +77,20 @@ var x = new Array();
 //values
 var yFitness = new Array();
 var yDeaths = new Array();
-var yFoods = new Array();
-var yPoisons = new Array();
+var yFood = new Array();
+var yPoison = new Array();
 
 //avgs
 var yAverageFitness = new Array();
 var yAverageDeaths = new Array();
-var yAverageFoods = new Array();
-var yAveragePoisons = new Array();
+var yAverageFood = new Array();
+var yAveragePoison = new Array();
 
 //std.deviation
 var yStdDeviationFitness = new Array();
 var yStdDeviationDeaths = new Array();
-var yStdDeviationFoods = new Array();
-var yStdDeviationPoisons = new Array();
+var yStdDeviationFood = new Array();
+var yStdDeviationPoison = new Array();
 
 
 
@@ -101,11 +101,9 @@ function updateHistograms() {
   updateDataTest("Fitness", maxFitness, null);
   updateDataTest("Deaths", numberOfDeaths, populationSize);
 
-  updateData("Food", layoutFoods,
-    'Ingested Food', dataBarFoods, yFoods, numberOfFoodsEaten);
+  updateDataTest("Food", numberOfFoodIngested, numberOfFood);
+  updateDataTest("Poison", numberOfPoisonIngested, numberOfPoison);
 
-  updateData("Poison", layoutPoisons,
-    'Ingested Poison', dataBarPoisons, yPoisons, numberOfPoisonsEaten);
 }
 
 function updateDataTest(id, data, data2) {
@@ -152,10 +150,43 @@ function updateDataTest(id, data, data2) {
       break;
 
     case "Food":
-      
+      dataBarFood.y = yFood;
+      dataAvgFood.y = yAverageFood;
+      dataDevFood.y = yStdDeviationFood;
+      yFood.push(data);
+      yAverageFood.push(calculateWeightedMean(yFood, data2));
+      yStdDeviationFood.push(calculateStdDeviation(yFood, yAverageFood[yAverageFood.length - 1]));
+
+      // Set Title
+      layout.title = genTitle;
+      layout.yaxis.title = "Number of Food Ingested";
+      dataBarFood.name = 'Food Ingested';
+      dataAvgFood.name = 'Average Food Ingested';
+      dataDevFood.name = 'Std. Deviation Food Ingested';
+
+      // Refresh Chart
+      Plotly.newPlot(id, [dataBarFood, dataAvgFood, dataDevFood], layout);
+
       break;
 
     case "Poison":
+      dataBarPoison.y = yPoison;
+      dataAvgPoison.y = yAveragePoison;
+      dataDevPoison.y = yStdDeviationPoison;
+      yPoison.push(data);
+      yAveragePoison.push(calculateWeightedMean(yPoison, data2));
+      yStdDeviationPoison.push(calculateStdDeviation(yPoison, yAveragePoison[yAveragePoison.length - 1]));
+
+      // Set Title
+      layout.title = genTitle;
+      layout.yaxis.title = "Number of Poison Ingested";
+      dataBarPoison.name = 'Poison Ingested';
+      dataAvgPoison.name = 'Average Poison Ingested';
+      dataDevPoison.name = 'Std. Deviation Poison Ingested';
+
+      // Refresh Chart
+      Plotly.newPlot(id, [dataBarDeaths, dataAvgDeaths, dataDevDeaths], layout);
+
       break;
 
     default:

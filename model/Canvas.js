@@ -26,8 +26,8 @@ var frameWidth = 900;
 var frameHeight = 500;
 
 var numberOfDeaths = 0;
-var numberOfPoisonsEaten = 0;
-var numberOfFoodsEaten = 0;
+var numberOfPoisonIngested = 0;
+var numberOfFoodIngested = 0;
 
 var backgroundColor = '#075484';
 var textPauseColor = '';
@@ -96,8 +96,10 @@ function runSimulation() {
         runGeneticAlgorithm();
         generateHistograms();
         numberOfDeaths = 0;
-        numberOfPoisonsEaten = 0;
-        numberOfFoodsEaten = 0;
+        numberOfPoisonIngested = 0;
+        numberOfFoodIngested = 0;
+        numberOfFood = 0;
+        numberOfPoison = 0;
     }
 
     // remove all elements from last frame
