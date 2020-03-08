@@ -2,13 +2,14 @@
 GA (Genetic Algorithm) applied to CA (Cellular Automata)
 
 ## Description
-Entirely developed with P5 Library and Pure JS
+Entirely developed with P5 Library and Pure JS. Plot.ly was used to represent Stats.
 
 ### Instructions
 Run *index.html*
 
 ### Demo
-Test the deployment here: https://cesarsk.github.io/AI-GA-on-CA/
+Test the live deployment here: https://cesarsk.github.io/AI-GA-on-CA/
+Note: Demo is optimized only on Google Chrome, so use Chrome.
 
 ### Copyright
 Check LICENSE

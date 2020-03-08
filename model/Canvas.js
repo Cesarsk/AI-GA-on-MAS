@@ -2,7 +2,6 @@ var population = new Array();
 var food = new Array();
 var poison = new Array();
 
-
 var maxFitnessToReach = 0;
 var maxGenerationsToReach = 0;
 

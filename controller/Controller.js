@@ -118,7 +118,15 @@ function resetSimulation() {
     yDeaths = new Array();
     yFoods = new Array();
     yPoisons = new Array();
-    
+    yAverageFitness = new Array();
+    yAverageDeaths = new Array();
+    yAverageFoods = new Array();
+    yAveragePoisons = new Array();
+    yStdDeviationFitness = new Array();
+    yStdDeviationDeaths = new Array();
+    yStdDeviationFoods = new Array();
+    yStdDeviationPoisons = new Array();
+
     clearBackground();
     initElements();
 }
