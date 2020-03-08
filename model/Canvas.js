@@ -96,10 +96,12 @@ function runSimulation() {
         runGeneticAlgorithm();
         generateHistograms();
         numberOfDeaths = 0;
-        numberOfPoisonIngested = 0;
-        numberOfFoodIngested = 0;
         numberOfFood = 0;
         numberOfPoison = 0;
+        numberOfPoisonIngested = 0;
+        numberOfFoodIngested = 0;
+        food = new Array();
+        poison = new Array();
     }
 
     // remove all elements from last frame

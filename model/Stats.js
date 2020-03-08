@@ -126,7 +126,7 @@ function updateDataTest(id, data, data2) {
       dataDevMaxFitness.name = 'Std. Deviation Fitness';
 
       // Refresh Chart
-      Plotly.newPlot(id, [dataBarMaxFitness, dataAvgMaxFitness, dataDevMaxFitness], layout);
+      Plotly.newPlot(id, [dataAvgMaxFitness, dataDevMaxFitness], layout);
       break;
 
     case "Deaths":
@@ -145,7 +145,7 @@ function updateDataTest(id, data, data2) {
       dataDevDeaths.name = 'Std. Deviation Deaths';
 
       // Refresh Chart
-      Plotly.newPlot(id, [dataBarDeaths, dataAvgDeaths, dataDevDeaths], layout);
+      Plotly.newPlot(id, [dataAvgDeaths, dataDevDeaths], layout);
 
       break;
 
@@ -159,13 +159,13 @@ function updateDataTest(id, data, data2) {
 
       // Set Title
       layout.title = genTitle;
-      layout.yaxis.title = "Number of Food Ingested";
+      layout.yaxis.title = "Food Ingested";
       dataBarFood.name = 'Food Ingested';
       dataAvgFood.name = 'Average Food Ingested';
       dataDevFood.name = 'Std. Deviation Food Ingested';
 
       // Refresh Chart
-      Plotly.newPlot(id, [dataBarFood, dataAvgFood, dataDevFood], layout);
+      Plotly.newPlot(id, [dataAvgFood, dataDevFood], layout);
 
       break;
 
@@ -179,13 +179,13 @@ function updateDataTest(id, data, data2) {
 
       // Set Title
       layout.title = genTitle;
-      layout.yaxis.title = "Number of Poison Ingested";
+      layout.yaxis.title = "Poison Ingested";
       dataBarPoison.name = 'Poison Ingested';
       dataAvgPoison.name = 'Average Poison Ingested';
       dataDevPoison.name = 'Std. Deviation Poison Ingested';
 
       // Refresh Chart
-      Plotly.newPlot(id, [dataBarDeaths, dataAvgDeaths, dataDevDeaths], layout);
+      Plotly.newPlot(id, [dataAvgDeaths, dataDevDeaths], layout);
 
       break;
 
