@@ -10,7 +10,7 @@
   <script src="model/Organism.js"></script>
   <script src="controller/Controller.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-  <title>AI - GA IN CELLULAR AUTOMATA</title>
+  <title>AI - GA IN A MULTI-AGENT SYSTEM</title>
   <link rel="shortcut icon" href="/favicon.ico">
 </head>
 
@@ -18,7 +18,7 @@
 
   <div class="container">
     <div class="title">
-      <h1>AI - GA IN CELLULAR AUTOMATA</h1>
+      <h1>AI - GA IN A MULTI-AGENT SYSTEM</h1>
     </div>
 
     <div class="Canvas" id="Canvas">
@@ -26,12 +26,16 @@
     </div>
 
     <div class="abstract">
-      <p> Abstract: This is an application of GA (Genetic Algorithm) in a Cellular Automata. <span style="color:#51a0ef">ORGANISMS (BLUE)</span> are going to
-        evolve over generations (represented by a background color change) and learn how to eat <span style="color:rgb(13, 164, 13);">FOOD (GREEN)</span> and avoid <span style="color:#ff2100;">POISON (RED)</span>. Stats are generated
+      <p> Abstract: This is an application of GA (Genetic Algorithm) in a Multi-Agent System. <span
+          style="color:#51a0ef">ORGANISMS (BLUE)</span> are going to
+        evolve over generations (represented by a background color change) and learn how to eat <span
+          style="color:rgb(13, 164, 13);">FOOD (GREEN)</span> and avoid <span style="color:#ff2100;">POISON
+          (RED)</span>. Stats are generated
         dinamically during execution in the bottom. It's possible to tune the parameters only before starting the
         simulation.
         Tuning needs to be taken with delicacy since a severe tuning against the Organisms may extinct the whole
-        population prematurely. Note: Framerate Option is work in progress so don't use it for obtaining data. Also, the app is meant to run ONLY on Google Chrome.
+        population prematurely. Note: Framerate Option is work in progress so don't use it for obtaining data. Also, the
+        app is meant to run ONLY on Google Chrome.
       </p>
     </div>
 
@@ -124,13 +128,13 @@
             <tr>
               <td><span>Poison spawn rate:</span></td>
               <td><span id="randomPoisonGenerationOutput"></span></td>
-              <td><input type="range" min="0" max="10" id="randomPoisonGeneration" value="1"></td>
+              <td><input type="range" min="0" max="10" id="randomPoisonGeneration" value="2"></td>
             </tr>
 
             <tr>
               <td><span>Elitism:</span></td>
               <td><span id="elitismOutput"></span></td>
-              <td><input type="range" id="elitism" min="0" max="20" value="5"></td>
+              <td><input type="range" id="elitism" min="0" max="10" value="5"></td>
             </tr>
 
             <tr>

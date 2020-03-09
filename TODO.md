@@ -1,8 +1,8 @@
 # General TO DO List:
 [] Documentation: presentation
-[] Pre-made experiments
 [] Ringraziamenti : Stefano Abbate
-[] Dati da inserire
+[] Raccogliere Dati
+[] Sostituire titolo, non è un CA.
 [x] Study GA
 [x] Change Style canvas
 [x] Aggiungere Instructions
@@ -32,23 +32,11 @@
 [x] Fitness massima;
 
 ## Altro:
-quando fai le prove devi cambiare solo un parametro per volta
 
 ## Canvas:
 [x] cambio background animato
 
 ## Domande per il Prof.
-Stavo valutando un po' i dati post esperimento.
-
-Uno dei grafici che volevo tracciare è il rapporto veleni_ingeriti / generazione in forma di istogramma... il comportamento atteso è che il numero di veleni decrementi con l'aumentare delle generazione tuttavia questo comporta che di generazione in generaizone il numero di veleni generati sullo scenario sia costante, è giusto?
-
-Perché se ne genero un numero casuale chiaramente l'istogramma non è valido... D'altro lato immagino un sistema "reale" dove non è precidibile quanti veleni ci possano essere ad ogni generazione. Ha qualche indicazione a riguardo??
-
-Lo stesso vale per il grafico (sempre istogramma) che volevo mettere riguardante il numero di cibi inseriti / generazione.
-
-Altri grafici che ho valutato riguardano la max fitness / generazione, deaths / generazione.
-
-Cosa ne pensa? 
 
 ### Sandbox
 
