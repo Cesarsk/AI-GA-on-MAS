@@ -11,6 +11,7 @@ Run *index.html*
 
 ### Demo
 Test the live deployment here: https://cesarsk.github.io/AI-GA-on-CA/
+
 Note: Demo is optimized only on Google Chrome, so use Chrome.
 
 ### Thanks to
