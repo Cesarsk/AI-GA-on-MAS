@@ -1,17 +1,23 @@
 # General TO DO List:
+[] Rispondere al Prof. Roli
+[] Organizzare presentazione finale in .ppt
+[] Scrivere un bel README
 [] Documentation: presentation
-[] Ringraziamenti : Stefano Abbate
 [] Raccogliere Dati
-[] Sostituire titolo, non è un CA.
+    - Organizzare i Dati
+
+[x] Sostituire titolo, non è un CA
 [x] Study GA
 [x] Change Style canvas
 [x] Aggiungere Instructions
+[x] Ringraziamenti
 
 ## Bugfix:
 [x] Sistemare il frameCount, quando parte la simulazione deve risultate uguale a 0, azzerare il frameCount nella funzione di frame va bene per l'istante iniziale 
 [x] Il numero di morti sembra impreciso nell'istogramma.
 [x] Perche' gli organismi non crescono piu tanto?
 [x] Controllare Food Spawn Rate e Poison Spawn Rate
+[] A volte (Valori alti di Elitism) c'è ancora quel bug in console del "radius", ad oggi non chiarito.
 
 ## Istogrammi:
 [x] Aggiungere parametri usati nella simulazione ai dati come label
