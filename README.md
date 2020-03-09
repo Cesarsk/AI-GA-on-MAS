@@ -16,7 +16,6 @@ Note: Demo is optimized only on Google Chrome, so use Chrome.
 ### Thanks to
 - C.Eng. Carlo Messere for helping me with CSS;
 - M.Eng. Stefano Abbate for helping me with Data Analytics;
-- And whoever was part of the project and tested it.
 
 ### Copyright
 Check LICENSE
