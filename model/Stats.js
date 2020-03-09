@@ -95,7 +95,7 @@ var yStdDeviationPoison = new Array();
 
 
 function updateHistograms() {
-  genTitle = "P: " + populationSize + "; FR: " + randomFoodGeneration + "; PR: " + randomPoisonGeneration + "; E: " + elitism + "; MR: " + mutationRate + "; D: " + deathEnabled + ";";
+  genTitle = "P: " + populationSize + "; FR: " + randomFoodGeneration + "; PR: " + randomPoisonGeneration + "; E: " + elitism + "; MR: " + mutationRate+";";
   x.push(generation);
 
   updateDataTest("Fitness", maxFitness, null);
@@ -185,7 +185,7 @@ function updateDataTest(id, data, data2) {
       dataDevPoison.name = 'Std. Deviation Poison Ingested';
 
       // Refresh Chart
-      Plotly.newPlot(id, [dataAvgDeaths, dataDevDeaths], layout);
+      Plotly.newPlot(id, [dataAvgPoison, dataDevPoison], layout);
 
       break;
 

@@ -50,13 +50,13 @@ function refreshValues() {
 
     maxGenerationsToReach = document.getElementById("maxGenerationsToReach").value;
     document.getElementById("maxGenerationsToReachOutput").innerHTML = maxGenerationsToReach;
-    
+
     maxFitnessToReach = document.getElementById("maxFitnessToReach").value;
     document.getElementById("maxFitnessToReachOutput").innerHTML = maxFitnessToReach;
 
     randomFoodGeneration = document.getElementById("randomFoodGeneration").value;
     document.getElementById("randomFoodGenerationOutput").innerHTML = randomFoodGeneration;
-    
+
     randomPoisonGeneration = document.getElementById("randomPoisonGeneration").value;
     document.getElementById("randomPoisonGenerationOutput").innerHTML = randomPoisonGeneration;
 
@@ -114,18 +114,25 @@ function resetSimulation() {
     frameCount = 0;
     frameCountTmp = 0;
     x = new Array();
+
+    //values
     yFitness = new Array();
     yDeaths = new Array();
-    yFoods = new Array();
-    yPoisons = new Array();
+    yFood = new Array();
+    yPoison = new Array();
+
+    //avgs
     yAverageFitness = new Array();
     yAverageDeaths = new Array();
-    yAverageFoods = new Array();
-    yAveragePoisons = new Array();
+    yAverageFood = new Array();
+    yAveragePoison = new Array();
+
+    //std.deviation
     yStdDeviationFitness = new Array();
     yStdDeviationDeaths = new Array();
-    yStdDeviationFoods = new Array();
-    yStdDeviationPoisons = new Array();
+    yStdDeviationFood = new Array();
+    yStdDeviationPoison = new Array();
+
 
     clearBackground();
     initElements();
