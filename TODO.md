@@ -1,9 +1,10 @@
 # General TO DO List:
+[] Organizzare incontro con la prof.
 [] Rispondere al Prof. Roli
-[] Organizzare presentazione finale in .ppt
-[] Scrivere un bel README
-[] Documentation: presentation
-[] Raccogliere Dati
+[x] Scrivere un bel README
+[x] Organizzare presentazione finale in .ppt
+[x] Documentation: presentation
+[x] Raccogliere Dati
     - Organizzare i Dati
 
 [x] Sostituire titolo, non è un CA
@@ -50,11 +51,11 @@
 Metaeuristica.
 
 
-    //Elitism involves copying a small proportion of the fittest candidates, unchanged, 
-    //into the next generation. This can sometimes have a dramatic impact on performance 
-    //by ensuring that the EA does not waste time re-discovering previously discarded partial solutions. 
-    //Candidate solutions that are preserved unchanged through elitism remain eligible for selection 
-    //as parents when breeding the remainder of the next generation.
+    Elitism involves copying a small proportion of the fittest candidates, unchanged, 
+    into the next generation. This can sometimes have a dramatic impact on performance 
+    by ensuring that the EA does not waste time re-discovering previously discarded partial solutions. 
+    Candidate solutions that are preserved unchanged through elitism remain eligible for selection 
+    as parents when breeding the remainder of the next generation.
 
     //A practical variant of the general process of constructing a 
     //new population is to allow the best organism(s) 
