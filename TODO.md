@@ -45,21 +45,26 @@
 
 ## Domande per il Prof.
 
-### Sandbox
+Gentile Prof. Roli,
 
+Innanzitutto la ringrazio nuovamente per l'estrema pazienza e soprattutto per tutto il supporto ricevuto, con assoluta certezza posso dire che non sarei riuscito ad arrivare fino a qui senza le sue conferme e suggerimenti.
 
-Metaeuristica.
+La invito a consultare la demo nuovamente nella sua versione definitiva:
+    - https://cesarsk.github.io/AI-GA-on-MAS/
 
+Ho effettuato i cambi dei nomi come suggerito, ho inserito media e deviazione standard, che hanno portato ai comportamenti aspettati, finalmente.
 
-    Elitism involves copying a small proportion of the fittest candidates, unchanged, 
-    into the next generation. This can sometimes have a dramatic impact on performance 
-    by ensuring that the EA does not waste time re-discovering previously discarded partial solutions. 
-    Candidate solutions that are preserved unchanged through elitism remain eligible for selection 
-    as parents when breeding the remainder of the next generation.
+Il movimento dell'organismo funziona nel seguente modo:
 
-    //A practical variant of the general process of constructing a 
-    //new population is to allow the best organism(s) 
-    //from the current generation to carry over to the next, unaltered. 
-    //This strategy is known as elitist selection and guarantees that 
-    //the solution quality obtained by the GA will not decrease from 
-    //one generation to the next.
+Ogni organismo è dotato di un sensore (la grandezza della pinna indica quanto distante è in grado di rilevare).
+
+L'ambiente "nei paraggi" viene analizzato e, non appena viene rilevato del cibo, l'organismo memorizza la sua distanza da esso. Se rileva altre particelle di cibo, si sceglie di memorizzare il cibo meno distante da esso. (un semplice problema di ricerca del minimo).
+
+Dopo questa operazione, abbiamo un goal, e l'organismo si muove verso di esso. Non appena la distanza è nulla, il cibo viene ingerito.
+
+Nel caso nessun cibo fosse a portata dell'organismo, il movimento è randomizzato, quindi l'organismo intraprende una direzione casuale.
+
+Spero di aver fatto chiarezza,
+
+Cordialmente,
+Luca Cesarano
