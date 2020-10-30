@@ -10,7 +10,7 @@ Entirely developed with P5 Library and Pure JS. Plot.ly was used to represent St
 Run *index.html*
 
 ### Demo
-Test the live deployment here: https://cesarsk.github.io/AI-GA-on-CA/
+Test the live deployment here: https://cesarsk.github.io/AI-GA-on-MAS/
 
 Note: Demo is optimized only on Google Chrome, so use Chrome.
 
